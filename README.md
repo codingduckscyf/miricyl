@@ -10,3 +10,7 @@ Chakra UI documentation: https://chakra-ui.com/
 This is a modern stack, utilising serverless API endpoints.
 
 Agile Board: https://linear.app/coding-ducks/team/COD/active
+
+## Deployments & preview builds.
+
+Deployment and preview builds are available via Vercel. You will be able to see the current state of our main branch: https://miricyl.vercel.app/
