@@ -7,18 +7,10 @@
     "module": "es2015",
     "baseUrl": ".",
     "paths": {
-      "~/components/*": [
-        "components/*"
-      ],
-      "~/styles/*": [
-        "styles/*"
-      ],
-      "~/pages/*": [
-        "pages/*"
-      ],
-      "~/lib/*": [
-          "lib/*"
-      ]
+      "~/components/*": ["components/*"],
+      "~/styles/*": ["styles/*"],
+      "~/pages/*": ["pages/*"],
+      "~/lib/*": ["lib/*"]
     }
   },
   "exclude": [
@@ -33,9 +25,6 @@
   ],
   "typeAcquisition": {
     "enable": true,
-    "include": [
-      "react",
-      "react-dom"
-    ]
+    "include": ["react", "react-dom"]
   }
 }
