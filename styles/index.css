@@ -1,0 +1,4 @@
+/* This is how we add tailwind styles */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
