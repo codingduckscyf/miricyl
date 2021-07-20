@@ -1,29 +1,23 @@
-const { PrismaClient } = require('@prisma/client')
-const faker = require('faker')
-const slugify = require('slugify')
-const prisma = new PrismaClient()
-
-
-
-
-
-
+const { PrismaClient } = require("@prisma/client");
+const faker = require("faker");
+const slugify = require("slugify");
+const prisma = new PrismaClient();
 
 const seedDatabase = async () => {
+    console.log("Deleting old data... 🥊");
+    await prisma.issueToContent.deleteMany();
+    await prisma.content.deleteMany();
+    await prisma.issue.deleteMany();
+    await prisma.category.deleteMany();
+    console.log("Deleted old data! 🥊");
 
-    console.log("Deleting old data... 🥊")
-    await prisma.issueToContent.deleteMany()
-    await prisma.content.deleteMany()
-    await prisma.issue.deleteMany()
-    await prisma.category.deleteMany()
-    console.log("Deleted old data! 🥊")
-
-    console.log("Creating primary categories...")
+    console.log("Creating primary categories...");
     await prisma.category.create({
         data: {
             title: "Mental Health",
             slug: "mental-health",
-            description: "A wide variety of mental health topics, including depression, anxiety, and other personal concerns.",
+            description:
+                "A wide variety of mental health topics, including depression, anxiety, and other personal concerns.",
             issues: {
                 createMany: {
                     data: [
@@ -35,7 +29,7 @@ const seedDatabase = async () => {
                         {
                             title: "Depression",
                             slug: "depression",
-                            description: "Depression is a difficult topic to discuss."
+                            description: "Depression is a difficult topic to discuss.",
                         },
                         {
                             title: "Self-harm",
@@ -45,21 +39,20 @@ const seedDatabase = async () => {
                         {
                             title: "Eating disorders",
                             slug: "eating-disorders",
-                            description: "Eating disorders is a difficult topic to discuss."
-                        }
-                    ]
-                }
-            }
-
-        }
-    })
-
+                            description: "Eating disorders is a difficult topic to discuss.",
+                        },
+                    ],
+                },
+            },
+        },
+    });
 
     await prisma.category.create({
         data: {
             title: "Life issues",
             slug: "life-issues",
-            description: "Life can often get in the way. Here you'll find our helpful topics on managing those tough situations.",
+            description:
+                "Life can often get in the way. Here you'll find our helpful topics on managing those tough situations.",
             issues: {
                 createMany: {
                     data: [
@@ -71,20 +64,18 @@ const seedDatabase = async () => {
                         {
                             title: "Isolation",
                             slug: "isolation",
-                            description: "Isolation is a difficult topic to discuss."
+                            description: "Isolation is a difficult topic to discuss.",
                         },
                         {
                             title: "Death",
                             slug: "death",
                             description: "Death is a difficult topic to discuss.",
-                        }
-                    ]
-                }
-            }
-
-        }
-    })
-
+                        },
+                    ],
+                },
+            },
+        },
+    });
 
     await prisma.category.create({
         data: {
@@ -97,39 +88,37 @@ const seedDatabase = async () => {
                         {
                             title: "Workplace harassment",
                             slug: "workplace-harassment",
-                            description: "Workplace harassment care is a difficult topic to discuss.",
+                            description:
+                                "Workplace harassment care is a difficult topic to discuss.",
                         },
                         {
                             title: "Domestic abuse",
                             slug: "domestic-abuse",
-                            description: "Domestic abuse is a difficult topic to discuss."
+                            description: "Domestic abuse is a difficult topic to discuss.",
                         },
                         {
                             title: "Bullying",
                             slug: "bullying",
                             description: "Bullying is a difficult topic to discuss.",
-                        }
-                    ]
-                }
-            }
-
-        }
-    })
-    console.log("Created primary categories 🪄")
-
+                        },
+                    ],
+                },
+            },
+        },
+    });
+    console.log("Created primary categories 🪄");
 
     const issues = await prisma.issue.findMany({
         select: {
-            id: true
-        }
-    })
+            id: true,
+        },
+    });
 
-    console.log('Fetched issues 🎩')
+    console.log("Fetched issues 🎩");
 
     for (let i = 1; i < 50; i++) {
-
-        console.log(`Creating record ${i} of 50...`)
-        const title = faker.random.words(3)
+        console.log(`Creating record ${i} of 50...`);
+        const title = faker.random.words(3);
         await prisma.content.create({
             data: {
                 title: title,
@@ -139,18 +128,15 @@ const seedDatabase = async () => {
                 type: faker.datatype.number() > 4 ? "ARTICLE" : "VIDEO",
                 issues: {
                     create: {
-                        issueId: issues[Math.floor(issues.length * Math.random())].id
-                    }
-                }
-
-            }
-        })
+                        issueId: issues[Math.floor(issues.length * Math.random())].id,
+                    },
+                },
+            },
+        });
     }
 
-    console.log("Seeded database 🪄")
-    prisma.$disconnect()
+    console.log("Seeded database 🪄");
+    prisma.$disconnect();
+};
 
-
-}
-
-seedDatabase()
+seedDatabase();
