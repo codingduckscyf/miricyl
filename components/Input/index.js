@@ -7,8 +7,8 @@
 const Input = ({ label, id, ...props }) => {
     return (
         <div className="flex flex-col">
-            {label ? <label className="text-gray-600 text-sm mb-1" htmlFor={id}>{label}</label> : undefined}
-            <input className="placeholder-gray-500 border border-gray-300 rounded py-1 px-2" id={id} {...props} />
+            {label ? <label data-testid="input-label" className="text-gray-600 text-sm mb-1" htmlFor={id}>{label}</label> : undefined}
+            <input data-testid="input-input" className="placeholder-gray-500 border border-gray-300 rounded py-1 px-2" id={id} {...props} />
         </div>
     )
 }
