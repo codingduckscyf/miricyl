@@ -1,7 +1,6 @@
 import Image from "next/image";
 import Button from "../Buttons/Button";
 
-
 const dummyCategories = [
   "Depression",
   "Anxiety",
@@ -11,9 +10,9 @@ const dummyCategories = [
 ];
 
 const handleClickCategories = () => {
-    dummyCategories.map(category => { 
-        console.log(category)
-    })
+  dummyCategories.map((category) => {
+    console.log(category);
+  });
 };
 
 const Header = ({ backgroundColour, imgSrc, imgAlt, title, caption }) => {
