@@ -1,4 +1,5 @@
 import Footer from "~/components/Footer";
+import CalloutBox from "~/components/CalloutBox";
 import Header from "~/components/Header";
 import headerImg from "../public/images/headerImg.jpeg";
 
@@ -13,6 +14,14 @@ const Index = () => {
         caption={
           "Miricyl helps you find key, informative resources to guide you on your mental health journey"
         }
+      />
+      <CalloutBox
+        heading="Mental health support for everyone"
+        caption="Miricly’s knowledge base is a curated collection of wonderful content designed to support and aid everyone in their journey to better mental health."
+        imgUrl="https://ichef.bbci.co.uk/childrens-responsive-ichef-ck/400xn/amz/cbbc/bp-duckling.jpg"
+        imgAltText="duckling"
+        buttonText="Learn more about Miricyl's vision"
+        buttonLink="/about"
       />
       <Footer />
     </div>
