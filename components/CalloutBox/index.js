@@ -11,7 +11,7 @@ const CalloutBox = ({
 }) => {
   return (
     <div className="md:h-96 max-w-md mx-auto bg-blue-100 overflow-hidden md:max-w-full">
-      <div className="md:flex">
+      <div className="md:flex md:justify-between">
         <div className="p-8 lg:p-16">
           <h2 className="font-extrabold tracking-wide text-3xl md:text-4xl text-blue-800">
             {heading}
