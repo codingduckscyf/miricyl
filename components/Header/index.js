@@ -1,15 +1,6 @@
 import Image from "next/image";
 import Button from "../Buttons/Button";
 
-// {
-//   listItems.map((item, index) => (
-//     <li key={index} className="text-gray-500 text-sm">
-//       <Link href="/">
-//         <a>{item}</a>
-//       </Link>
-//     </li>
-//   ));
-// }
 
 const dummyCategories = [
   "Depression",
@@ -25,15 +16,13 @@ const handleClickCategories = () => {
     })
 };
 
-
-const Header = ({ pageHeader }) => {
-  const { backgroundColour, imgSrc, imgAlt, title, caption } = pageHeader;
+const Header = ({ backgroundColour, imgSrc, imgAlt, title, caption }) => {
   return (
-    <header>
+      <header style={{ backgroundColor:{backgroundColour}}}>
       <div className="flex justify-between">
         <div className="self-center mx-16 w-1/2">
-          <h2 className="py-7 font-bold text-8xl">{title}</h2>
-          <p className=" text-2xl text-gray-500">{caption}</p>
+          <h2 className="py-7 font-bold text-4xl md:text-8xl">{title}</h2>
+          <p className="text-xl md:text-2xl text-gray-500">{caption}</p>
           <Button caption={"View Categories"} onClick={handleClickCategories} />
         </div>
         <div className="md:flex-shrink-0 h-full">
