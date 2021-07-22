@@ -5,7 +5,7 @@ const CalloutBoxButton = ({ buttonLink, buttonText }) => {
     <Link href={buttonLink}>
       <a
         type="button"
-        className="inline-flex items-center mt-8 px-2.5 py-3  border border-transparent text-xs font-medium rounded shadow-sm text-white bg-blue-800 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+        className="inline-flex items-center px-8 py-4 border border-transparent text-sm md:text-xl font-medium rounded shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 mt-10"
       >
         {buttonText}
       </a>
