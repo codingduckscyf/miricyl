@@ -1,5 +1,3 @@
-import React from "react";
-
 const CalloutBoxButton = ({ buttonClickHandler, buttonText }) => {
   return (
     <button
