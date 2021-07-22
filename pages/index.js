@@ -11,9 +11,7 @@ const Index = () => {
         imgUrl="https://ichef.bbci.co.uk/childrens-responsive-ichef-ck/400xn/amz/cbbc/bp-duckling.jpg"
         imgAltText="duckling"
         buttonText="Learn more about Miricyl's vision"
-        buttonClickHandler={() =>
-          console.log(`Learn more about Miricyl's vision was clicked!`)
-        }
+        buttonLink="/about"
       />
       <Footer />
     </div>

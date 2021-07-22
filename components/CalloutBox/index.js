@@ -6,7 +6,8 @@ const CalloutBox = ({
   imgUrl,
   imgAltText,
   buttonText,
-  buttonClickHandler,
+
+  buttonLink,
 }) => {
   return (
     <div className="md:h-96 max-w-md mx-auto bg-blue-100 overflow-hidden md:max-w-full">
@@ -16,10 +17,7 @@ const CalloutBox = ({
             {heading}
           </h2>
           <p className="mt-2 text-gray-500">{caption}</p>
-          <CalloutBoxButton
-            buttonClickHandler={buttonClickHandler}
-            buttonText={buttonText}
-          />
+          <CalloutBoxButton buttonLink={buttonLink} buttonText={buttonText} />
         </div>
         <div className="md:flex-shrink-0 md:h-96">
           <img
