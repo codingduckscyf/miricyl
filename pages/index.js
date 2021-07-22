@@ -1,13 +1,6 @@
 import Footer from "~/components/Footer";
 import CalloutBox from "~/components/CalloutBox";
 
-// Button Link / onClick function
-// Button Text
-// Caption /
-// Heading Text /
-// Image Url /
-// Image Alt Tag /
-
 const Index = () => {
   return (
     <div>
