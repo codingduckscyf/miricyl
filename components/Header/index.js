@@ -1,4 +1,5 @@
 import Image from "next/image";
+import SubCatCard from "../ Subcategory Card/SubCatCard";
 import Button from "../Buttons/Button";
 
 
@@ -18,7 +19,7 @@ const handleClickCategories = () => {
 
 const Header = ({ backgroundColour, imgSrc, imgAlt, title, caption }) => {
   return (
-      <header style={{ backgroundColor:{backgroundColour}}}>
+      <header style={{ backgroundColor: { backgroundColour } }}>
       <div className="flex justify-between">
         <div className="self-center mx-16 w-1/2">
           <h2 className="py-7 font-bold text-4xl md:text-8xl">{title}</h2>
@@ -26,7 +27,7 @@ const Header = ({ backgroundColour, imgSrc, imgAlt, title, caption }) => {
           <Button caption={"View Categories"} onClick={handleClickCategories} />
         </div>
         <div className="md:flex-shrink-0 h-full">
-          <Image className=" rounded-l-3xl" src={imgSrc} alt={imgAlt} />
+          <Image className="rounded-l-3xl" src={imgSrc} alt={imgAlt} />
         </div>
       </div>
     </header>
