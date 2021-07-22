@@ -2,6 +2,7 @@ import Footer from "~/components/Footer";
 import CalloutBox from "~/components/CalloutBox";
 import Header from "~/components/Header";
 import headerImg from "../public/images/headerImg.jpeg";
+import calloutBoxImage from "../public/images/calloutBoxImage.jpg";
 
 const Index = () => {
   return (
@@ -18,8 +19,8 @@ const Index = () => {
       <CalloutBox
         heading="Mental health support for everyone"
         caption="Miricly’s knowledge base is a curated collection of wonderful content designed to support and aid everyone in their journey to better mental health."
-        imgUrl="https://ichef.bbci.co.uk/childrens-responsive-ichef-ck/400xn/amz/cbbc/bp-duckling.jpg"
-        imgAltText="duckling"
+        imgUrl={calloutBoxImage}
+        imgAltText="smiling person"
         buttonText="Learn more about Miricyl's vision"
         buttonLink="/about"
       />

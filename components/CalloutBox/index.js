@@ -1,4 +1,5 @@
 import CalloutBoxButton from "./CalloutBoxButton";
+import Image from "next/image";
 
 const CalloutBox = ({
   heading,
@@ -6,7 +7,6 @@ const CalloutBox = ({
   imgUrl,
   imgAltText,
   buttonText,
-
   buttonLink,
 }) => {
   return (
@@ -20,7 +20,7 @@ const CalloutBox = ({
           <CalloutBoxButton buttonLink={buttonLink} buttonText={buttonText} />
         </div>
         <div className="md:flex-shrink-0 md:h-96">
-          <img
+          <Image
             className="w-full object-cover md:h-full md:w-full"
             src={imgUrl}
             alt={imgAltText}
