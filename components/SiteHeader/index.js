@@ -8,14 +8,14 @@ const SiteHeader = () => {
         <div className="flex p-6">
           <Link href="/">
             {/* not sure about this */}
-            <a className="px-4">Miricyl</a>
+            <a className="px-4 hover:text-blue-800 font-extrabold">Miricyl</a>
           </Link>
-          <p>Knowledge dashboard</p>
+          <p className="text-gray-600">Knowledge dashboard</p>
         </div>
         <div className="flex justify-around items-center p-6 w-1/2">
           <Dropdown />
           <Link href="/about">
-            <a className="">About</a>
+            <a className="hover:text-blue-800">About</a>
           </Link>
           <button
             type="button"
