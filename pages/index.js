@@ -2,10 +2,12 @@ import Footer from "~/components/Footer";
 import CalloutBox from "~/components/CalloutBox";
 import Header from "~/components/Header";
 import headerImg from "../public/images/headerImg.jpeg";
+import SiteHeader from "~/components/SiteHeader";
 
 const Index = () => {
   return (
     <div>
+      <SiteHeader />
       <Header
         backgroundColor="white"
         imgSrc={headerImg}
@@ -21,7 +23,7 @@ const Index = () => {
         imgUrl="https://ichef.bbci.co.uk/childrens-responsive-ichef-ck/400xn/amz/cbbc/bp-duckling.jpg"
         imgAltText="duckling"
         buttonText="Learn more about Miricyl's vision"
-        buttonLink="/about"
+        buttonLink="/mental-health"
       />
       <Footer />
     </div>
