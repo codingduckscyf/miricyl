@@ -36,11 +36,9 @@ const Dropdown = () => {
         Categories
       </button>
       <div
-        className={
-          isHidden
-            ? "dropdown-content hidden absolute w-96 bg-gray-50 z-10 shadow p-8 my-8 border border-gray-200 rounded"
-            : "dropdown-content block absolute w-96 bg-gray-50 z-10 shadow p-8 my-8 border border-gray-200 rounded"
-        }
+        className={`${
+          isHidden ? "hidden" : "block"
+        } dropdown-content absolute w-96 bg-gray-50 z-10 shadow p-8 my-8 border border-gray-200 rounded`}
       >
         {categories.map((category) => (
           <Link href={category.link} key={category.id}>
