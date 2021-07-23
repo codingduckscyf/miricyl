@@ -34,7 +34,7 @@
     "tailwindcss": "^2.2.4"
   },
   "lint-staged": {
-    "./**/*.js": "eslint --fix"
+    "./**/*.js": "eslint"
   },
   "husky": {
     "hooks": {
