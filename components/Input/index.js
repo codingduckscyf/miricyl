@@ -14,3 +14,8 @@ const Input = ({ label, id, ...props }) => {
 }
 
 export default Input
+
+
+const Component = () => {
+    return <div class="hello world">This should be className.</div>
+}
