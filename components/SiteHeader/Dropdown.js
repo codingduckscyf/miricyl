@@ -28,7 +28,7 @@ const Dropdown = () => {
   const [isHidden, setIsHidden] = useState(true);
 
   return (
-    <div class="dropdown relative inline-block">
+    <div className="dropdown relative inline-block">
       <button
         onClick={() => setIsHidden(!isHidden)}
         className="hover:text-blue-800"
