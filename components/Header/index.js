@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Button from "../Buttons/Button";
 
+
 const handleClick = () => {
   console.log("Hello from buttons world");
 };
