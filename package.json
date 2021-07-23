@@ -7,7 +7,6 @@
     "lint": "lint-staged; pretty-quick --staged"
   },
   "dependencies": {
-    "husky": "^4.3.8",
     "next": "latest",
     "postgres": "^1.0.2",
     "react": "^17.0.2",
@@ -26,6 +25,7 @@
     "eslint-config-next": "^11.0.1",
     "eslint-config-prettier": "^8.3.0",
     "esm": "^3.2.25",
+    "husky": "^4.3.8",
     "jest": "^27.0.6",
     "lint-staged": "^11.0.1",
     "postcss": "^8.3.5",
