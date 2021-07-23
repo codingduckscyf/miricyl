@@ -5,4 +5,4 @@ const SlugPage = () => {
     return <div>Hello from {query.avocado}</div>
 }
 
-export default SlugPage
+export default SlugPage;
