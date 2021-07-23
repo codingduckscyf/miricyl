@@ -1,20 +1,13 @@
 import Image from "next/image";
 import Button from "../Buttons/Button";
 
-
 const handleClick = () => {
   console.log("Hello from buttons world");
 };
 
 const Header = ({ backgroundColor, imgSrc, imgAlt, title, caption }) => {
   return (
-    <header
-      className={
-        "bg-" +
-        backgroundColor +
-        "-100 "
-      }
-    >
+    <div className={"bg-" + backgroundColor + "-100 "}>
       <div className="flex justify-between">
         <div className="self-center mx-16 w-1/2">
           <h2 className="py-7 font-bold text-4xl md:text-8xl">{title}</h2>
