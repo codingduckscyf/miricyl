@@ -1,3 +1,3 @@
 export default (req, res) => {
-    res.end("hello from the hello api endpoint")
+	res.send("hello from the hello api endpoint")
 }
