@@ -1,4 +1,5 @@
 import CalloutBoxButton from "./CalloutBoxButton";
+import Image from "next/image";
 
 const CalloutBox = ({
   heading,
@@ -6,7 +7,6 @@ const CalloutBox = ({
   imgUrl,
   imgAltText,
   buttonText,
-
   buttonLink,
 }) => {
   return (

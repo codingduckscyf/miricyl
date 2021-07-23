@@ -25,7 +25,7 @@ const Header = ({ backgroundColor, imgSrc, imgAlt, title, caption }) => {
           <Image className="rounded-l-3xl" src={imgSrc} alt={imgAlt} />
         </div>
       </div>
-    </header>
+    </div>
   );
 };
 
