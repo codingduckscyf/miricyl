@@ -1,4 +1,4 @@
-
+import Image from "next/image";
 import Button from "../Buttons/Button";
 
 const handleClick = () => {
@@ -21,10 +21,10 @@ const Header = ({ backgroundColor, imgSrc, imgAlt, title, caption }) => {
             {title}
           </h2>
           <p className="mt-2 text-gray-500 text-xl md:text-2xl">{caption}</p>
-          <Button caption={"View Categories"} onClick={handleClick} />
+          <Button caption="View Categories" onClick={handleClick} />
         </div>
         <div className="md:flex-shrink-0">
-          <img
+          <Image
             className="md:h-1/4 object-cover rounded-l-3xl"
             src={imgSrc}
             alt={imgAlt}

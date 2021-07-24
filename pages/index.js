@@ -11,8 +11,8 @@ const Index = () => {
       <SiteHeader />
       <Header
         backgroundColor="white"
-        imgSrc="https://images.unsplash.com/photo-1548142813-c348350df52b?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2135&q=80"
-        imgAlt={"smiling girl"}
+        imgSrc={headerImg}
+        imgAlt="smiling girl"
         title="Guiding you through mental health resources"
         caption={
           "Miricyl helps you find key, informative resources to guide you on your mental health journey"
