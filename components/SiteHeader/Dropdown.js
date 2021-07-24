@@ -31,7 +31,7 @@ const Dropdown = () => {
     <div className="dropdown relative inline-block">
       <button
         onClick={() => setIsHidden(!isHidden)}
-        className="hover:text-blue-800"
+        className="hover:text-blue-800 mt-2 text-xl md:text-2xl"
       >
         Categories
       </button>
