@@ -7,15 +7,28 @@ const handleClick = () => {
 
 const Header = ({ backgroundColor, imgSrc, imgAlt, title, caption }) => {
   return (
-    <div className={"bg-" + backgroundColor + "-100 "}>
-      <div className="flex justify-between">
-        <div className="self-center mx-16 w-1/2">
-          <h2 className="py-7 font-bold text-4xl md:text-8xl">{title}</h2>
-          <p className="text-xl md:text-2xl text-gray-500">{caption}</p>
-          <Button caption={"View Categories"} onClick={handleClick} />
+    <div
+      className={
+        "bg-" +
+        backgroundColor +
+        "-100 " +
+        " md:h-1/2 max-w-md mx-auto overflow-hidden md:max-w-full"
+      }
+    >
+      <div className="md:flex md:justify-between">
+        <div className="p-8 lg:p-20 flex flex-col justify-between">
+          <h2 className="font-extrabold tracking-wide text-3xl md:text-6xl">
+            {title}
+          </h2>
+          <p className="mt-2 text-gray-500 text-xl md:text-2xl">{caption}</p>
+          <Button caption="View Categories" onClick={handleClick} />
         </div>
-        <div className="md:flex-shrink-0 h-full">
-          <Image className="rounded-l-3xl" src={imgSrc} alt={imgAlt} />
+        <div className="md:flex-shrink-0">
+          <Image
+            className="md:h-1/4 object-cover rounded-l-3xl"
+            src={imgSrc}
+            alt={imgAlt}
+          />
         </div>
       </div>
     </div>
