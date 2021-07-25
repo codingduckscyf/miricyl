@@ -4,6 +4,7 @@ import Header from "~/components/Header";
 import headerImg from "../public/images/headerImg.jpeg";
 import SiteHeader from "~/components/SiteHeader";
 import calloutImg from "../public/images/callOutBox.jpeg";
+import CategoriesSelection from "~/components/CategorySelection";
 
 const Index = () => {
   return (
@@ -18,6 +19,7 @@ const Index = () => {
           "Miricyl helps you find key, informative resources to guide you on your mental health journey"
         }
       />
+      <CategoriesSelection/>
       <CalloutBox
         heading="Mental health support for everyone"
         caption="Miricly’s knowledge base is a curated collection of wonderful content designed to support and aid everyone in their journey to better mental health."
