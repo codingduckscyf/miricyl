@@ -3,13 +3,12 @@ import CalloutBox from "~/components/CalloutBox";
 import Header from "~/components/Header";
 import headerImg from "../public/images/headerImg.jpeg";
 import SiteHeader from "~/components/SiteHeader";
-import HeaderConditionSection from "~/components/HeaderConditionSection";
+
 
 const Index = () => {
   return (
     <div>
       <SiteHeader />
-      <HeaderConditionSection />
       <Header
         backgroundColor="white"
         imgSrc={headerImg}
