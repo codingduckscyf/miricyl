@@ -9,11 +9,11 @@ const HeaderConditionSection = () => {
         </p>
       </div>
       <div className="md:px-10">
-        <label className="text-gray-700 font-light md:font-light text-xs md:text-sm ">
+        <label for="searchbox" className="text-gray-700 font-light md:font-light text-xs md:text-sm ">
           Search for a topic
         </label>
         <br></br>
-        <input
+        <input id="searchbox"
           className=" h-8 bg-white border-2 border-gray-200 shadow-sm rounded-md md:px-8"
           type="text"
           placeholder="e.g Loneliness"
