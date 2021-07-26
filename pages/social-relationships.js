@@ -1,6 +1,6 @@
 import Layout from "~/components/Layout/Layout";
 
-const SocialRelationships = () => {
+const SocialRelationshipsPage = () => {
   return (
     <Layout title="social&relationships">
       <div>
@@ -12,4 +12,4 @@ const SocialRelationships = () => {
   );
 };
 
-export default SocialRelationships;
+export default SocialRelationshipsPage;

@@ -1,6 +1,6 @@
 import Layout from "~/components/Layout/Layout";
 
-const LifeIssues = () => {
+const LifeIssuesPage = () => {
   return (
     <Layout title="issues">
       <h1 className="text-red-800 bg-yellow-300 font-bold text-5xl p-32">
@@ -10,4 +10,4 @@ const LifeIssues = () => {
   );
 };
 
-export default LifeIssues;
+export default LifeIssuesPage;

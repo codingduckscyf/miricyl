@@ -8,4 +8,4 @@ const ComponentsPage = () => {
     </div>
 }
 
-export default ComponentsPage
+export default ComponentsPage;

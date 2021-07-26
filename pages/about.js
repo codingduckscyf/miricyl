@@ -1,7 +1,7 @@
 import Head from "next/head";
 import Layout from "~/components/Layout/Layout";
 
-const About = () => {
+const AboutPage = () => {
   return (
     <Layout title="about">
       <div>
@@ -13,4 +13,4 @@ const About = () => {
   );
 };
 
-export default About;
+export default AboutPage;
