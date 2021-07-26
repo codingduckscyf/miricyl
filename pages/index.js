@@ -5,6 +5,7 @@ import calloutImg from "../public/images/callOutBox.jpeg";
 import CategoriesSelection from "~/components/CategorySelection";
 import Layout from "~/components/Layout/Layout";
 
+
 const Index = () => {
   return (
     <Layout title="home">
