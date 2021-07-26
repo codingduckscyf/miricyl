@@ -24,7 +24,7 @@ const handler = async (req, res) => {
 
 			const [relation] = await sql`INSERT INTO issue_content_rel (issue_id, content_id) values (${issueID}, ${content.id}) RETURNING issue_id, content_id;`;
 
-			return res.status(200).json({ message: `ContentID: ${relation.issue_id} and issueID: ${relation.content_id}` });
+			return res.status(200).json({ message: `ContentID: ${relation.content_id} and issueID: ${relation.issue_id}` });
 		}
 	}
 }
