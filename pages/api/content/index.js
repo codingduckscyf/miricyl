@@ -9,24 +9,16 @@ const handler = async (req, res) => {
 
 		const checkContentTitle = await sql`SELECT * FROM content WHERE title=${title};`;
 
-		const checkIssueID = await sql`SELECT * FROM issues WHERE id=${issueID};`;
-
-		if (!title || !content_type || !description || !issueID) {
+		if (!title || !content_type || !description) {
 			return res.status(400).json({ message: "Please fill the required fields" });
 		}
 		if (checkContentTitle.count !== 0) {
 			return res.status(400).json({ message: `Content with the title: ${title} already exists` })
-		}
-		if (checkIssueID.count === 0) {
-			return res.status(400).json({ message: `There is no issue with the id: ${issueID}` })
 		} else {
 			const [content] = await sql`INSERT INTO content (title, description, content_type, video_url, img_url) VALUES (${title}, ${description}, ${content_type}, ${video_url}, ${img_url}) RETURNING id;`;
 
-			const [relation] = await sql`INSERT INTO issue_content_rel (issue_id, content_id) values (${issueID}, ${content.id}) RETURNING issue_id, content_id;`;
-
-			return res.status(200).json({ message: `ContentID: ${relation.content_id} and issueID: ${relation.issue_id}` });
+			return res.status(200).json({ message: `Content with the id: ${content.id} was added to the database` });
 		}
 	}
 }
-
 export default handler;
