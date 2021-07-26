@@ -3,6 +3,7 @@ import CalloutBox from "~/components/CalloutBox";
 import Header from "~/components/Header";
 import headerImg from "../public/images/headerImg.jpeg";
 import SiteHeader from "~/components/SiteHeader";
+import HeaderConditionSection from "~/components/HeaderConditionSection";
 
 const Index = () => {
   return (
@@ -25,6 +26,7 @@ const Index = () => {
         buttonText="Learn more about Miricyl's vision"
         buttonLink="/mental-health"
       />
+      <HeaderConditionSection />
       <Footer />
     </div>
   );
