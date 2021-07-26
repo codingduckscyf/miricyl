@@ -5,7 +5,7 @@ const handler = async (req, res) => {
 		return res.status(200).json({ data: await sql`SELECT * FROM content;` });
 	}
 	if (req.method === "POST") {
-		const { title, content_type, description, issueID, img_url, video_url } = req.body;
+		const { title, content_type, description, img_url, video_url } = req.body;
 
 		const checkContentTitle = await sql`SELECT * FROM content WHERE title=${title};`;
 
