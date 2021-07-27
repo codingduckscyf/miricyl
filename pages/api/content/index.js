@@ -15,8 +15,11 @@ const handler = async (req, res) => {
 		if (checkContentTitle.count !== 0) {
 			return res.status(400).json({ message: `Content with the title: ${title} already exists` })
 		} else {
-			const [content] = await sql`INSERT INTO content (title, description, content_type, video_url, img_url) VALUES (${title}, ${description}, ${content_type}, ${video_url}, ${img_url}) RETURNING id;`;
-			return res.status(200).json({ message: `Content with the id: ${content.id} was added to the database` });
+			const [content] = await sql`INSERT INTO content (title, description, content_type, video_url, img_url) VALUES (${title}, ${description}, ${content_type}, ${video_url}, ${img_url}) RETURNING *;`;
+			return res.status(200).json({
+				message: `Content with the id: ${content.id} was added to the database`,
+				data: content
+			});
 		}
 	}
 }
