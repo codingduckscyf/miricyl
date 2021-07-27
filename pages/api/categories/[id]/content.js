@@ -2,7 +2,7 @@ import sql from "~/lib/postgres";
 
 const handler = async ({ method, query: { id } }, res) => {
   if (method === "GET") {
-    const checkID = await sql`SELECT * FROM categoies WHERE id=${id}`;
+    const checkID = await sql`SELECT * FROM categories WHERE id=${id}`;
     if (checkID.count === 0) {
       return res.status(400).json({ message: `There is no category with the id: ${id}` })
     } else {
