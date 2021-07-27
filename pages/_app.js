@@ -1,10 +1,17 @@
-import Layout from "~/components/Layout/Layout";
 import "~/styles/index.css";
+import { SWRConfig } from "swr";
+import { fetcher } from "~/lib/fetcher";
 
 export default function MyApp({ Component, pageProps }) {
   return (
-    <>
-      <Component {...pageProps} />
-    </>
+    <SWRConfig
+      value={{
+        fetcher,
+      }}
+    >
+      <main>
+        <Component {...pageProps} />
+      </main>
+    </SWRConfig>
   );
 }

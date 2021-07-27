@@ -3,10 +3,12 @@ import Header from "~/components/Header";
 import headerImg from "../public/images/headerImg.jpeg";
 import calloutImg from "../public/images/callOutBox.jpeg";
 import CategoriesSelection from "~/components/CategorySelection";
+import useSWR from "swr";
 import Layout from "~/components/Layout/Layout";
 
-
 const Index = () => {
+  const { data } = useSWR("/api/categories");
+  const { data: issues } = useSWR("/api/issues");
   return (
     <Layout title="home">
       <div>
