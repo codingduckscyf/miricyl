@@ -7,11 +7,12 @@ const handler = async (req, res) => {
 	if (req.method === "POST") {
 		const { title, content_type, description, img_url, video_url } = req.body;
 
-		const checkContentTitle = await sql`SELECT * FROM content WHERE title=${title};`;
-
 		if (!title || !content_type || !description) {
 			return res.status(400).json({ message: "Please fill the required fields" });
 		}
+		
+		const checkContentTitle = await sql`SELECT * FROM content WHERE title=${title};`;
+
 		if (checkContentTitle.count !== 0) {
 			return res.status(400).json({ message: `Content with the title: ${title} already exists` })
 		} else {
