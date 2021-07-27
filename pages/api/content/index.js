@@ -10,7 +10,6 @@ const handler = async (req, res) => {
 		if (!title || !content_type || !description) {
 			return res.status(400).json({ message: "Please fill the required fields" });
 		}
-
 		const checkContentTitle = await sql`SELECT * FROM content WHERE title=${title};`;
 
 		if (checkContentTitle.count !== 0) {
