@@ -20,7 +20,6 @@ const SiteHeader = () => {
           <div className="block sm:hidden">
             <button
               onClick={() => {
-                console.log("hey you clicked me!");
                 setIsExpanded(!isExpanded);
               }}
               className="flex items-center px-3 py-2 border border-black rounded text-teal-200 border-black-400 hover:border-blue-800"
