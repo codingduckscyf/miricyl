@@ -23,18 +23,15 @@ const CategoriesSelection = () => {
       </div>
       <div className="container mx-auto">
         <div className="flex flex-wrap items-center justify-center font-bold">
-          {categories.data.map((category) => {
-            let { id, name, imgUrl } = category;
-            return (
-              <Card
-                key={id}
-                id={id}
-                title={name}
-                url={imgUrl}
-                link={`${name}`}
-              />
-            );
-          })}
+          {categories.data.map(({ id, name, imgUrl, slug }) => (
+            <Card
+              key={id}
+              id={id}
+              title={name}
+              url={imgUrl}
+              link={`/${slug}`}
+            />
+          ))}
         </div>
       </div>
     </div>
