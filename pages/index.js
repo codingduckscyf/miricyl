@@ -13,7 +13,6 @@ const Index = () => {
   return (
     <div>
       <SiteHeader />
-      {data && JSON.stringify(data, null, 2)}
       <Header
         backgroundColor="white"
         imgSrc={headerImg}

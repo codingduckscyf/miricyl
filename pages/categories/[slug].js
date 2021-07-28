@@ -16,9 +16,9 @@ const Post = () => {
   }
 
   return (
-    <Layout title="issues">
+    <Layout title={data.name}>
       <h1 className="text-red-800 bg-yellow-300 font-bold text-5xl p-32">
-        Hey hey hey from {data.data.name} page!
+        Hey hey hey from {data.name} page!
       </h1>
     </Layout>
   );
