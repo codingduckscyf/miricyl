@@ -5,11 +5,8 @@ import headerImg from "../public/images/headerImg.jpeg";
 import SiteHeader from "~/components/SiteHeader";
 import calloutImg from "../public/images/callOutBox.jpeg";
 import CategoriesSelection from "~/components/CategorySelection";
-import useSWR from "swr";
 
 const Index = () => {
-  const { data } = useSWR("/api/categories");
-  const { data: issues } = useSWR("/api/issues");
   return (
     <div>
       <SiteHeader />

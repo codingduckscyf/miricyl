@@ -9,7 +9,6 @@ const Post = () => {
   if (!data && !error) {
     return <div>Loading...</div>;
   }
-  console.log(data, error);
 
   if (!data) {
     return <Layout>Not found.</Layout>;
