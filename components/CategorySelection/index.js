@@ -3,14 +3,14 @@ import useSWR from "swr";
 import React from "react";
 import Card from "./card";
 
-const CategoriesSelection = ({ url, title }) => {
-  const { data, error } = useSWR("/api/categories");
+const CategoriesSelection = () => {
+  const { data: categories, error } = useSWR("/api/categories");
 
-  if (!data && !error) {
+  if (!categories && !error) {
     return <div>Loading...</div>;
   }
 
-  if (!data) {
+  if (!categories) {
     return <div>Not found.</div>;
   }
   return (
@@ -23,15 +23,18 @@ const CategoriesSelection = ({ url, title }) => {
       </div>
       <div className="container mx-auto">
         <div className="flex flex-wrap items-center justify-center font-bold">
-          {data.data.map((item) => (
-            <Card
-              key={item.id}
-              id={item.id}
-              title={item.name}
-              url={item.imgUrl}
-              link={`${item.name}`}
-            />
-          ))}
+          {categories.data.map((category) => {
+            let { id, name, imgUrl } = category;
+            return (
+              <Card
+                key={id}
+                id={id}
+                title={name}
+                url={imgUrl}
+                link={`${name}`}
+              />
+            );
+          })}
         </div>
       </div>
     </div>
