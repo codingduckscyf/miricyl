@@ -28,7 +28,7 @@ const CategoriesList = () => {
     <div>
       {categories.map((category) => (
         <Link href={category.link} key={category.id}>
-          <a className="block hover:bg-gray-200 py-4">
+          <a className="block hover:bg-gray-200 p-6">
             <h3 className="font-extrabold">{category.title}</h3>
             <p className="text-gray-500">{category.description}</p>
           </a>

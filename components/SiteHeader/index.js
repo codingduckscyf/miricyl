@@ -23,7 +23,7 @@ const SiteHeader = () => {
                 console.log("hey you clicked me!");
                 setIsExpanded(!isExpanded);
               }}
-              className="flex items-center px-3 py-2 border rounded text-teal-200 border-teal-400 hover:text-white hover:border-black"
+              className="flex items-center px-3 py-2 border border-black rounded text-teal-200 border-black-400 hover:border-blue-800"
             >
               <svg
                 className="fill-current h-3 w-3"
@@ -40,15 +40,19 @@ const SiteHeader = () => {
         {isExpanded ? (
           <div className="flex flex-col justify-between shadow w-4/5 p-8 my-8 ">
             <CategoriesList />
-            <Link href="/about">
-              <a className="hover:text-blue-800 mt-2">About</a>
-            </Link>
-            <button
-              type="button"
-              className="inline-flex items-center p-2 md:p-3 border border-transparent rounded-lg shadow-sm text-white bg-blue-800 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 text-l md:text-xl w-max"
-            >
-              Bookmark
-            </button>
+            <div className="flex justify-between">
+              <Link href="/about">
+                <a className="mt-2 p-6 hover:text-blue-800 font-extrabold">
+                  About
+                </a>
+              </Link>
+              <button
+                type="button"
+                className="inline-flex items-center p-2 md:p-3 m-6 border border-transparent rounded-lg shadow-sm text-white bg-blue-800 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 text-l md:text-xl w-max"
+              >
+                Bookmark
+              </button>
+            </div>
           </div>
         ) : (
           <div className="hidden sm:flex justify-around items-center p-6 w-1/2">
