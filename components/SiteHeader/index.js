@@ -37,7 +37,7 @@ const SiteHeader = () => {
         </div>
 
         {isExpanded ? (
-          <div className="flex flex-col justify-between shadow w-4/5 p-8 my-8 ">
+          <div className="flex flex-col justify-between shadow w-4/5 p-8 my-8">
             <CategoriesList />
             <div className="flex justify-between">
               <Link href="/about">
@@ -54,7 +54,7 @@ const SiteHeader = () => {
             </div>
           </div>
         ) : (
-          <div className="hidden sm:flex justify-around items-center p-6 w-1/2">
+          <div className="hidden sm:flex justify-between items-center w-full">
             <Dropdown />
             <Link href="/about">
               <a className="hover:text-blue-800 mt-2">About</a>
