@@ -28,9 +28,9 @@ const Header = ({
             {title}
           </h2>
           <p className="mt-2 text-gray-500 text-xl md:text-2xl">{caption}</p>
-          {buttonCaption ? (
+          {buttonCaption && (
             <Button caption={buttonCaption} onClick={handleClick} />
-          ) : null}
+          )}
         </div>
         <div className="md:flex-shrink-0">
           <Image

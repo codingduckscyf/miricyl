@@ -6,7 +6,7 @@ import headerImg from "../../public/images/woman's-hands.jpeg";
 const Categories = () => {
   const { data } = useSWR("/api/categories");
   return (
-    <Layout title="">
+    <Layout title="Categories">
       <Header
         backgroundColor="white"
         imgSrc={headerImg}
