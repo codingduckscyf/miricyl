@@ -5,6 +5,8 @@ import headerImgMain from "../public/images/headerImg.jpeg";
 import SiteHeader from "~/components/SiteHeader";
 import calloutImg from "../public/images/callOutBox.jpeg";
 import CategoriesSelection from "~/components/CategorySelection";
+import Categories from "./categories";
+import HeaderConditionSection from "~/components/HeaderConditionSection";
 const Index = () => {
   return (
     <div>
@@ -28,6 +30,8 @@ const Index = () => {
         buttonText="Learn more about Miricyl's vision"
         buttonLink="/mental-health"
       />
+      <HeaderConditionSection />
+      <Categories />
       <Footer />
     </div>
   );

@@ -1,39 +1,29 @@
 import useSWR from "swr";
-import Layout from "~/components/Layout/Layout";
-import Header from "~/components/Header";
-import headerImgCat from "../../public/images/headerImgCat.jpeg";
 import SubCatCard from "~/components/SubCatCard";
 
 const Categories = () => {
   const { data: categories } = useSWR("/api/issues");
   return (
-    <Layout title="Categories">
-      <Header
-        backgroundColor="white"
-        imgSrc={headerImgCat}
-        imgAlt="Woman's hand"
-        title=" Mental Health"
-        caption={
-          "Miricyl helps you find key, informative resources to guide you on your mental health journey"
-        }
-      />
-      <div className="flex flex-col md:flex-row md:flex-wrap justify-end items-center md:justify-between my-32">
+    <div>
+      <div className="flex flex-col md:flex-row md:flex-wrap justify-end items-center md:justify-between mb-20">
         {categories &&
-          categories.data.map((category) => (
+          categories.data.map(({ id, category_id, name }) => (
             <SubCatCard
-              key={category.id}
+              key={id}
               backgroundColor={
-                category.category_id === 1
+                category_id === 1
                   ? "red"
-                  : category.category_id === 2
-                  ? "blue"
-                  : "green"
+                  : category_id === 2
+                  ? "pink"
+                  : category_id === 3
+                  ? "purple"
+                  : "blue"
               }
-              title={category.name}
+              title={name}
               category={
-                category.category_id === 1
+                category_id === 1
                   ? "Depression"
-                  : category.category_id === 2
+                  : category_id === 2
                   ? "Life issues"
                   : "Sex & relationships"
               }
@@ -41,14 +31,7 @@ const Categories = () => {
             />
           ))}
       </div>
-    </Layout>
+    </div>
   );
 };
 export default Categories;
-
-// {
-//   categories &&
-//     categories.data.map((category, index) => (
-//       <li key={index}>{category.name}</li>
-//     ));
-// }
