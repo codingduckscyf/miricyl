@@ -2,12 +2,13 @@ import useSWR from "swr";
 import SubCatCard from "~/components/SubCatCard";
 
 const Categories = () => {
-  const { data: categories } = useSWR("/api/issues");
+  const { data: issuesCategories } = useSWR("/api/issues");
+  const { data: categories } = useSWR("/api/categories");
   return (
     <div>
       <div className="flex flex-col md:flex-row md:flex-wrap justify-end items-center md:justify-between mb-20">
-        {categories &&
-          categories.data.map(({ id, category_id, name }) => (
+        {issuesCategories &&
+          issuesCategories.data.map(({ id, category_id, name }) => (
             <SubCatCard
               key={id}
               backgroundColor={
@@ -21,11 +22,10 @@ const Categories = () => {
               }
               title={name}
               category={
-                category_id === 1
-                  ? "Depression"
-                  : category_id === 2
-                  ? "Life issues"
-                  : "Sex & relationships"
+                categories &&
+                categories.data.map(
+                  ({ name, id }) => category_id === id && name
+                )
               }
               link="/"
             />
