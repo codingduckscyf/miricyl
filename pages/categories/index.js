@@ -5,7 +5,7 @@ import headerImgCat from "../../public/images/headerImgCat.jpeg";
 import SubCatCard from "~/components/SubCatCard";
 
 const Categories = () => {
-  const { data: categories } = useSWR("/api/categories");
+  const { data: categories } = useSWR("/api/issues");
   return (
     <Layout title="Categories">
       <Header
@@ -17,14 +17,26 @@ const Categories = () => {
           "Miricyl helps you find key, informative resources to guide you on your mental health journey"
         }
       />
-      <div className="flex justify-between my-32">
+      <div className="flex flex-col md:flex-row md:flex-wrap justify-end items-center md:justify-between my-32">
         {categories &&
           categories.data.map((category) => (
             <SubCatCard
               key={category.id}
-              backgroundColor="green"
+              backgroundColor={
+                category.category_id === 1
+                  ? "red"
+                  : category.category_id === 2
+                  ? "blue"
+                  : "green"
+              }
               title={category.name}
-              category="Something"
+              category={
+                category.category_id === 1
+                  ? "Depression"
+                  : category.category_id === 2
+                  ? "Life issues"
+                  : "Sex & relationships"
+              }
               link="/"
             />
           ))}
