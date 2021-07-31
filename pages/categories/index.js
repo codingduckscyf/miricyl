@@ -6,7 +6,7 @@ const Categories = () => {
   const { data: categories } = useSWR("/api/categories");
   return (
     <div>
-      <div className="flex flex-col md:flex-row md:flex-wrap justify-end items-center md:justify-between mb-20">
+      <div className="flex flex-col md:flex-row md:flex-wrap justify-end items-center md:justify-between mb-20 sm:mx-12">
         {issuesCategories &&
           issuesCategories.data.map(({ id, category_id, name }) => (
             <SubCatCard

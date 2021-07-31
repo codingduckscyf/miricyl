@@ -19,7 +19,7 @@ const MentalHealthPage = () => {
           "Miricyl helps you find key, informative resources to guide you on your mental health journey"
         }
       />
-      <div className="flex flex-col md:flex-row md:flex-wrap justify-end items-center md:justify-between my-32">
+      <div className="flex flex-col md:flex-row md:flex-wrap justify-end items-center md:justify-between my-12 sm:my-32 sm:mx-12">
         {issuesCategories &&
           issuesCategories.data
             .filter(({ category_id }) => category_id === 1)
