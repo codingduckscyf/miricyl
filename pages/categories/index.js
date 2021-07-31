@@ -27,7 +27,7 @@ const Categories = () => {
                   ({ name, id }) => category_id === id && name
                 )
               }
-              link="/"
+              link={`issues/${id}`}
             />
           ))}
       </div>
