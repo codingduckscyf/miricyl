@@ -1,23 +1,25 @@
 import Footer from "~/components/Footer";
 import CalloutBox from "~/components/CalloutBox";
 import Header from "~/components/Header";
-import headerImg from "../public/images/headerImg.jpeg";
+import headerImgMain from "../public/images/headerImg.jpeg";
 import SiteHeader from "~/components/SiteHeader";
 import calloutImg from "../public/images/callOutBox.jpeg";
 import CategoriesSelection from "~/components/CategorySelection";
-
+import Categories from "./categories";
+import HeaderConditionSection from "~/components/HeaderConditionSection";
 const Index = () => {
   return (
     <div>
       <SiteHeader />
       <Header
         backgroundColor="white"
-        imgSrc={headerImg}
+        imgSrc={headerImgMain}
         imgAlt="smiling girl"
         title="Guiding you through mental health resources"
         caption={
           "Miricyl helps you find key, informative resources to guide you on your mental health journey"
         }
+        buttonCaption="View Categories"
       />
       <CategoriesSelection />
       <CalloutBox
@@ -28,6 +30,8 @@ const Index = () => {
         buttonText="Learn more about Miricyl's vision"
         buttonLink="/mental-health"
       />
+      <HeaderConditionSection />
+      <Categories />
       <Footer />
     </div>
   );

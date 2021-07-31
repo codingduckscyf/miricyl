@@ -1,7 +1,7 @@
 import Link from "next/link";
 const SubCatCard = ({ backgroundColor, title, category, link }) => {
   return (
-    <div>
+    <div className="mb-8 mx-4">
       <Link href={link}>
         <a>
           <div
@@ -11,10 +11,10 @@ const SubCatCard = ({ backgroundColor, title, category, link }) => {
               "-300 rounded-2xl flex flex-col justify-end text-white"
             }
           >
-            <h3 className="  text-base md:text-2xl block text-white">
+            <h3 className="text-base md:text-2xl block text-white px-4">
               {category}
             </h3>
-            <h4 className="text-2xl md:text-4xl font-bold text-white pb-10">
+            <h4 className="text-xl md:text-4xl font-bold text-white px-4 pb-10">
               {title}
             </h4>
           </div>

@@ -9,17 +9,17 @@ const MentalHealthPage = () => {
   const { data: categories } = useSWR("/api/categories");
 
   return (
-    <Layout title="life-issues">
+    <Layout title="Social&Relationships">
       <Header
         backgroundColor="white"
         imgSrc={headerImgCat}
         imgAlt="Woman's hand"
-        title="life-issues"
+        title="Social & Relationship"
         caption={
           "Miricyl helps you find key, informative resources to guide you on your mental health journey"
         }
       />
-      <div className="flex flex-col md:flex-row md:flex-wrap justify-end items-center md:justify-between my-32">
+      <div className="flex flex-col md:flex-row md:flex-wrap justify-end items-center md:justify-around my-32">
         {issuesCategories &&
           issuesCategories.data
             .filter(({ category_id }) => category_id === 2)
