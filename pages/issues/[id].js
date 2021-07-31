@@ -40,7 +40,9 @@ const Issue = () => {
             contentType={issue.content_type}
             title={issue.title}
             caption={issue.description}
-            link="https://en.wikipedia.org/wiki/Alan_Watts"
+            link={
+              issue.video_url ?? "https://en.wikipedia.org/wiki/Mental_health"
+            }
           />
         ))}
       </ul>
