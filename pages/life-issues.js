@@ -14,7 +14,7 @@ const MentalHealthPage = () => {
         backgroundColor="white"
         imgSrc={headerImgCat}
         imgAlt="Woman's hand"
-        title="life-issues"
+        title="Life Issues"
         caption={
           "Miricyl helps you find key, informative resources to guide you on your mental health journey"
         }
@@ -26,13 +26,8 @@ const MentalHealthPage = () => {
             .map(({ id, category_id, name }) => (
               <SubCatCard
                 key={id}
-                backgroundColor={
-                  category_id === 1
-                    ? "red"
-                    : category_id === 2
-                    ? "blue"
-                    : "green"
-                }
+                backgroundColor1="green"
+                backgroundColor2="green"
                 title={name}
                 category={
                   categories &&

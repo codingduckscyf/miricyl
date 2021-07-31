@@ -11,14 +11,23 @@ const Categories = () => {
           issuesCategories.data.map(({ id, category_id, name }) => (
             <SubCatCard
               key={id}
-              backgroundColor={
+              backgroundColor1={
                 category_id === 1
-                  ? "red"
+                  ? "yellow"
                   : category_id === 2
-                  ? "pink"
+                  ? "green"
                   : category_id === 3
-                  ? "purple"
-                  : "blue"
+                  ? "indigo"
+                  : "indigo"
+              }
+              backgroundColor2={
+                category_id === 1
+                  ? "yellow"
+                  : category_id === 2
+                  ? "green"
+                  : category_id === 3
+                  ? "indigo"
+                  : "indigo"
               }
               title={name}
               category={
