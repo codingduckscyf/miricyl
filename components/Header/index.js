@@ -24,7 +24,7 @@ const Header = ({
     >
       <div className="md:flex md:justify-around">
         <div className="p-8 lg:p-20 flex flex-col justify-around">
-          <h2 className="font-extrabold tracking-wide text-3xl md:text-5xl">
+          <h2 className="font-bold tracking-wide text-3xl md:text-5xl">
             {title}
           </h2>
           <p className="mt-2 text-gray-500 text-xl md:text-2xl">{caption}</p>
