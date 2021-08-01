@@ -4,7 +4,7 @@ import Link from "next/link";
 
 const Card = ({ url, title, id, link }) => {
   return (
-    <div className="w-3/4 p-5 md:w-1/3">
+    <div className="w-3/4 p-5 md:w-1/3 my-20 capitalize">
       {/* TODO: Page /category/:id */}
       <Link href={link}>
         <a>
@@ -14,8 +14,8 @@ const Card = ({ url, title, id, link }) => {
               src={url || "https://picsum.photos/100"}
               alt={title || "Category"}
             />
-            <header className="items-center justify-between leading-tight p-2 bg-white  md:flex">
-              <h1 className="text-lg">{title || "Category"}</h1>
+            <header className="items-center justify-between leading-tight p-8 bg-white md:flex">
+              <h1 className="text-2xl">{title || "Category"}</h1>
             </header>
           </article>
         </a>

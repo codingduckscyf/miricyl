@@ -7,10 +7,10 @@ const SiteHeader = () => {
   const [isExpanded, setIsExpanded] = useState(false);
 
   return (
-    <header className="flex justify-between p-4 sm:p-6 bg-gray-100">
+    <header className="flex justify-between p-1 m-2">
       <nav className="flex flex-col sm:flex-row justify-between items-center mx-auto w-full md:max-w-8xl text-l md:text-xl">
         <div className="flex flex-row justify-between items-center mx-auto w-full">
-          <div className="p-6">
+          <div className="p-2">
             <Link href="/">
               <a className="pr-4 hover:text-blue-800 font-extrabold mt-2">
                 Miricyl
@@ -61,7 +61,7 @@ const SiteHeader = () => {
             </Link>
             <button
               type="button"
-              className="inline-flex items-center p-2 md:p-3 border border-transparent rounded-lg shadow-sm text-white bg-blue-800 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 text-l md:text-xl"
+              className="inline-flex items-center py-2 px-4 border border-transparent rounded-lg shadow-sm text-white bg-blue-800 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 text-l md:text-xl"
             >
               Bookmark
             </button>

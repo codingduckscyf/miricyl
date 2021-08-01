@@ -19,7 +19,7 @@ const categories = [
     title: "Social & Relationships",
     description:
       "Learn about social and relationships issues, product updates and company culture",
-    link: "/social-relationships",
+    link: "/social-relationship",
   },
 ];
 

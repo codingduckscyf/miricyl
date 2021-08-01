@@ -9,7 +9,7 @@ const MentalHealthPage = () => {
   const { data: categories } = useSWR("/api/categories");
 
   return (
-    <Layout title="Social&Relationships">
+    <Layout title="Social&Relationship">
       <Header
         backgroundColor="white"
         imgSrc={headerImgCat}
@@ -19,20 +19,15 @@ const MentalHealthPage = () => {
           "Miricyl helps you find key, informative resources to guide you on your mental health journey"
         }
       />
-      <div className="flex flex-col md:flex-row md:flex-wrap justify-end items-center md:justify-around my-32">
+      <div className="flex flex-col md:flex-row md:flex-wrap justify-end items-center md:justify-around my-12 sm:my-32 sm:mx-12">
         {issuesCategories &&
           issuesCategories.data
-            .filter(({ category_id }) => category_id === 2)
+            .filter(({ category_id }) => category_id === 3)
             .map(({ id, category_id, name }) => (
               <SubCatCard
                 key={id}
-                backgroundColor={
-                  category_id === 1
-                    ? "red"
-                    : category_id === 2
-                    ? "blue"
-                    : "green"
-                }
+                backgroundColor1="indigo"
+                backgroundColor2="indigo"
                 title={name}
                 category={
                   categories &&
