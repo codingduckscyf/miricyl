@@ -14,6 +14,14 @@ const Issue = () => {
     `/api/issues/${id}`
   );
 
+  if (!issueInfo && issueInfoError) {
+    return <div>Loading...</div>;
+  }
+
+  if (!issueInfo) {
+    return <div>Not found.</div>;
+  }
+
   if (!issueContent && !issueContentError) {
     return <div>Loading...</div>;
   }
@@ -28,14 +36,11 @@ const Issue = () => {
         issueTitle={issueInfo.data.name}
         issueDescription={issueInfo.data.description}
       />
-      <ul className="flex flex-col sm:flex-row flex-wrap justify-between p-4">
+      <ul className="flex flex-col sm:flex-row flex-wrap justify-between p-4 my-12">
         {issueContent.data.map((issue) => (
           <ContentCard
             key={issue.id}
-            imgSrc={
-              issue.img_url ??
-              "https://dummyimage.com/300x300/4552b3/c3c5db.jpg&text=issue+image"
-            }
+            imgSrc={issue.img_url ?? "https://picsum.photos/100"}
             imgAlt={issue.title}
             contentType={issue.content_type}
             title={issue.title}
