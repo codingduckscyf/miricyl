@@ -14,19 +14,14 @@ const Issue = () => {
     `/api/issues/${id}`
   );
 
-  if (!issueInfo && issueInfoError) {
+  if (
+    (!issueInfo && !issueInfoError) ||
+    (!issueContent && !issueContentError)
+  ) {
     return <div>Loading...</div>;
   }
 
-  if (!issueInfo) {
-    return <div>Not found.</div>;
-  }
-
-  if (!issueContent && !issueContentError) {
-    return <div>Loading...</div>;
-  }
-
-  if (!issueContent) {
+  if (!issueInfo || !issueContent) {
     return <div>Not found.</div>;
   }
 
