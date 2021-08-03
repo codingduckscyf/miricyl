@@ -41,9 +41,6 @@ const ContentCard = ({
       </Link>
       <div className="flex justify-end absolute bottom-5 right-3">
         <MdFavorite
-          // className={
-          //   isLiked ? "text-red-500 text-3xl" : "text-gray-300 text-3xl"
-          // }
           className={`${
             isLiked ? "text-red-500" : "text-gray-300"
           } text-3xl cursor-pointer`}
