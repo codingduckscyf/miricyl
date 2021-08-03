@@ -29,8 +29,8 @@ const Favorites = () => {
 
   return (
     <Layout>
-      <div className="p-32">
-        <h1 className="text-4xl">Your favorite items</h1>
+      <div className="p-32 font-bold text-center">
+        <h1 className="text-4xl text-center">Your favorite items</h1>
         <Content
           contentTitle="Saved Videos"
           contentArray={videos}

@@ -47,7 +47,7 @@ const SiteHeader = () => {
               </Link>
               <Link href="/favorites">
                 <a>
-                  <MdFavorite />
+                  <MdFavorite className="text-4xl" />
                 </a>
               </Link>
             </div>
@@ -60,7 +60,7 @@ const SiteHeader = () => {
             </Link>
             <Link href="/favorites">
               <a>
-                <MdFavorite />
+                <MdFavorite className="text-4xl mx-8" />
               </a>
             </Link>
           </div>
