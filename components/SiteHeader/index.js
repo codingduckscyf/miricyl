@@ -2,7 +2,7 @@ import { useState } from "react";
 import Link from "next/link";
 import Dropdown from "./Dropdown";
 import CategoriesList from "./CategoriesList";
-
+import { MdFavorite } from "react-icons/md";
 const SiteHeader = () => {
   const [isExpanded, setIsExpanded] = useState(false);
 
@@ -46,8 +46,8 @@ const SiteHeader = () => {
                 </a>
               </Link>
               <Link href="/favorites">
-                <a className="inline-flex items-center p-2 md:p-3 m-6 border border-transparent rounded-lg shadow-sm text-white bg-blue-800 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 text-l md:text-xl w-max">
-                  Bookmark
+                <a>
+                  <MdFavorite />
                 </a>
               </Link>
             </div>
@@ -59,8 +59,8 @@ const SiteHeader = () => {
               <a className="hover:text-blue-800 mt-2">About</a>
             </Link>
             <Link href="/favorites">
-              <a className="inline-flex items-center p-2 md:p-3 m-6 border border-transparent rounded-lg shadow-sm text-white bg-blue-800 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 text-l md:text-xl w-max">
-                Bookmark
+              <a>
+                <MdFavorite />
               </a>
             </Link>
           </div>
