@@ -7,8 +7,8 @@ const Content = ({
   favorites,
 }) => {
   return (
-    <div>
-      <h1>{contentTitle}</h1>
+    <div className="p-12">
+      <h1 className="text-2xl">{contentTitle}</h1>
       <ul className="flex flex-col sm:flex-row flex-wrap justify-between p-4 my-12">
         {contentArray.map(
           ({ id, img_url, title, content_type, description, video_url }) => (
