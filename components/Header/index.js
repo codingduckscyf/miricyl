@@ -1,10 +1,6 @@
 import Image from "next/image";
 import Button from "../Buttons/Button";
 
-const handleClick = () => {
-  console.log("Hello from buttons world");
-};
-
 const Header = ({
   backgroundColor,
   imgSrc,
@@ -15,12 +11,7 @@ const Header = ({
 }) => {
   return (
     <div
-      className={
-        "bg-" +
-        backgroundColor +
-        "-100 " +
-        " md:h-1/2 max-w-md mx-auto overflow-hidden md:max-w-full"
-      }
+      className={`bg-${backgroundColor}-100 md:h-1/2 max-w-md mx-auto overflow-hidden md:max-w-full`}
     >
       <div className="md:flex md:justify-around">
         <div className="p-8 lg:p-20 flex flex-col justify-around">
@@ -29,7 +20,7 @@ const Header = ({
           </h2>
           <p className="mt-2 text-gray-500 text-xl md:text-2xl">{caption}</p>
           {buttonCaption && (
-            <Button caption={buttonCaption} onClick={handleClick} />
+            <Button caption={buttonCaption} link="/categories" />
           )}
         </div>
         <div className="md:flex-shrink-0">
