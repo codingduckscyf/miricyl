@@ -4,7 +4,7 @@ import useSWR from "swr";
 import Header from "~/components/Header";
 import SubCatCard from "~/components/SubCatCard";
 import headerImgCat from "../../public/images/headerImgCat.jpeg";
-import slugConvertor from "~/lib/slugConvertor";
+import titleConvertor from "~/lib/titleConvertor";
 
 const Post = () => {
   const router = useRouter();
@@ -25,7 +25,7 @@ const Post = () => {
         backgroundColor="white"
         imgSrc={headerImgCat}
         imgAlt="Woman's hand"
-        title={slugConvertor(slug)}
+        title={titleConvertor(slug)}
         caption={
           "Miricyl helps you find key, informative resources to guide you on your mental health journey"
         }
@@ -56,7 +56,7 @@ const Post = () => {
                     : "indigo"
                 }
                 title={name}
-                category={slugConvertor(slug)}
+                category={titleConvertor(slug)}
                 link={`/issues/${id}`}
               />
             ))}

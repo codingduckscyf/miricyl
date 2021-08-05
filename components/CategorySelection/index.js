@@ -2,6 +2,7 @@
 import useSWR from "swr";
 import React from "react";
 import Card from "./card";
+import titleConvertor from "~/lib/titleConvertor";
 
 const CategoriesSelection = () => {
   const { data: categories, error } = useSWR("/api/categories");
@@ -27,7 +28,7 @@ const CategoriesSelection = () => {
             <Card
               key={id}
               id={id}
-              title={name}
+              title={titleConvertor(name)}
               url={imgUrl}
               link={`/categories/${slug}`}
             />

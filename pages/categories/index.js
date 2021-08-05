@@ -1,6 +1,6 @@
 import useSWR from "swr";
 import SubCatCard from "~/components/SubCatCard";
-import slugConvertor from "~/lib/slugConvertor";
+import titleConvertor from "~/lib/titleConvertor";
 
 const Categories = () => {
   const { data: issuesCategories } = useSWR("/api/issues");
@@ -31,7 +31,7 @@ const Categories = () => {
                   : "indigo"
               }
               title={name}
-              category={slugConvertor(slug)}
+              category={titleConvertor(slug)}
               link={`issues/${id}`}
             />
           ))}
