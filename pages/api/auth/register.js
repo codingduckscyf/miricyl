@@ -10,22 +10,22 @@ const schema = yup.object().shape({
 const handler = async ({ method, body: { email, password } }, res) => {
   if (method === "POST") {
     const user = {
-      email: email.toLowerCase(),
+      email: email,
       hash_password: password,
       is_admin: false,
     };
-    const valid = await schema.validate(user);
-    if (valid) {
+    const userValid = await schema.validate(user);
+    if (userValid) {
       const userExists = await sql`SELECT * FROM users WHERE email=${email}`;
-      user.hash_password = await bcrypt.hash(password, 10);
+      userValid.hash_password = await bcrypt.hash(password, 10);
       if (userExists.count > 0) {
         return res
           .status(400)
           .json({ message: "There is already an account with this email" });
       } else {
         const [newUser] = await sql`INSERT INTO users ${sql(
-          user,
-          ...Object.keys(user)
+          userValid,
+          ...Object.keys(userValid)
         )} RETURNING *;`;
         return res.json({ users: newUser });
       }
