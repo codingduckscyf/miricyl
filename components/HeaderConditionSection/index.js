@@ -1,4 +1,7 @@
-const HeaderConditionSection = () => {
+const HeaderConditionSection = ({ searchInput, setSearchInput }) => {
+  const handleChange = (event) => {
+    setSearchInput(event.target.value);
+  };
   return (
     <div className="flex flex-col md:flex-row md:items-end justify-between p-20">
       <div className="md:px-8">
@@ -20,7 +23,9 @@ const HeaderConditionSection = () => {
           id="searchbox"
           className=" h-8 bg-white border-2 border-gray-200 shadow-sm rounded-md md:px-8"
           type="text"
-          placeholder="e.g Loneliness"
+          placeholder="e.g Depression"
+          onChange={handleChange}
+          value={searchInput}
         ></input>
       </div>
     </div>
