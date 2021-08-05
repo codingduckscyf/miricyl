@@ -1,3 +1,4 @@
+require("dotenv").config();
 import bcrypt from "bcrypt";
 import sql from "~/lib/postgres";
 import * as yup from "yup";
@@ -11,7 +12,7 @@ const schema = yup.object().shape({
 const handler = async ({ method, body: { email, password } }, res) => {
   if (method === "POST") {
     const user = {
-      email: email,
+      email: email.toLowerCase(),
       hash_password: password,
     };
     const schemaValid = await schema.isValid(user);
@@ -24,6 +25,11 @@ const handler = async ({ method, body: { email, password } }, res) => {
             userExists[0].hash_password
           );
           if (userValid) {
+            const jsonToken = await jwt.sign(
+              user,
+              process.env.ACCESS_TOKEN_SECRET
+            );
+            return res.send(jsonToken);
             return res.status(200).json({ message: "Success" });
           } else {
             return res
