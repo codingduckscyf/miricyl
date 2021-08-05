@@ -29,7 +29,7 @@ const CategoriesSelection = () => {
               id={id}
               title={name}
               url={imgUrl}
-              link={`/${slug}`}
+              link={`/categories/${slug}`}
             />
           ))}
         </div>
