@@ -5,19 +5,28 @@ import * as yup from "yup";
 import jwt from "jsonwebtoken";
 
 const schema = yup.object().shape({
-  email: yup.string().email().required(),
-  hash_password: yup.string().required(),
+  email: yup.string().email().required().lowercase(),
+  hash_password: yup.string().required().min(6),
 });
+
+const getTokenFrom = async (req) => {
+  const authorization = req.get("authorization");
+  if (authorization && authorization.toLowerCase().startsWith("bearer ")) {
+    return authorization.substring(7);
+  }
+  return null;
+};
 
 const handler = async ({ method, body: { email, password } }, res) => {
   if (method === "POST") {
     const user = {
-      email: email.toLowerCase(),
+      email: email,
       hash_password: password,
     };
-    const schemaValid = await schema.isValid(user);
+    const schemaValid = await schema.validate(user);
     if (schemaValid) {
-      const userExists = await sql`SELECT * FROM users WHERE email=${email}`;
+      const userExists =
+        await sql`SELECT * FROM users WHERE email=${schemaValid.email}`;
       if (userExists.count > 0) {
         try {
           const userValid = await bcrypt.compare(
@@ -29,8 +38,9 @@ const handler = async ({ method, body: { email, password } }, res) => {
               user,
               process.env.ACCESS_TOKEN_SECRET
             );
-            return res.send(jsonToken);
-            return res.status(200).json({ message: "Success" });
+            return res
+              .status(200)
+              .send({ token: jsonToken, email: schemaValid.email });
           } else {
             return res
               .status(400)
