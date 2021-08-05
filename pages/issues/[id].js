@@ -15,11 +15,8 @@ const Issue = () => {
     `/api/issues/${id}`
   );
 
-<<<<<<< HEAD
-=======
   const { heartIconClickHandler, favorites } = useFavorite();
 
->>>>>>> 6fbe010 (adds favorites page)
   if (
     (!issueInfo && !issueInfoError) ||
     (!issueContent && !issueContentError)
