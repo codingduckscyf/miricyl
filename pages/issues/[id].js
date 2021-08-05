@@ -14,7 +14,6 @@ const Issue = () => {
   const { data: issueInfo, error: issueInfoError } = useSWR(
     `/api/issues/${id}`
   );
-  const { heartIconClickHandler, favorites } = useFavorite();
 
   const [favorites, setFavorites] = useLocalStorage("favoriteContents", []);
 
