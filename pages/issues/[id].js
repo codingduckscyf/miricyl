@@ -3,7 +3,7 @@ import useSWR from "swr";
 import { useRouter } from "next/dist/client/router";
 import ContentCard from "~/components/ContentCard";
 import IssueInfo from "~/components/IssueInfo";
-import { useFavorite } from "~/lib/useLocalStorage";
+import { useLocalStorage } from "~/lib/useLocalStorage";
 
 const Issue = () => {
   const router = useRouter();
@@ -14,6 +14,7 @@ const Issue = () => {
   const { data: issueInfo, error: issueInfoError } = useSWR(
     `/api/issues/${id}`
   );
+  // const { heartIconClickHandler, favorites } = useFavorite();
 
   const [favorites, setFavorites] = useLocalStorage("favoriteContents", []);
 
