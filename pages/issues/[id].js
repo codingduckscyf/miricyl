@@ -15,7 +15,7 @@ const Issue = () => {
     `/api/issues/${id}`
   );
 
-  const { heartIconClickHandler, favorites } = useFavorite();
+  // const { heartIconClickHandler, favorites } = useFavorite();
 
   if (
     (!issueInfo && !issueInfoError) ||
