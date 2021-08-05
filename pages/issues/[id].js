@@ -4,7 +4,6 @@ import { useRouter } from "next/dist/client/router";
 import ContentCard from "~/components/ContentCard";
 import IssueInfo from "~/components/IssueInfo";
 import { useLocalStorage } from "~/lib/useLocalStorage";
-import { useFavorite } from "~/lib/useLocalStorage";
 
 const Issue = () => {
   const router = useRouter();
@@ -17,8 +16,6 @@ const Issue = () => {
   );
 
   const [favorites, setFavorites] = useLocalStorage("favoriteContents", []);
-
-  const { heartIconClickHandler, favorites } = useFavorite();
 
   if (
     (!issueInfo && !issueInfoError) ||
