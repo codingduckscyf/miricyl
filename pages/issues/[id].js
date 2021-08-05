@@ -14,15 +14,14 @@ const Issue = () => {
   const { data: issueInfo, error: issueInfoError } = useSWR(
     `/api/issues/${id}`
   );
+  const { heartIconClickHandler, favorites } = useFavorite();
 
-  // const { heartIconClickHandler, favorites } = useFavorite();
+  const [favorites, setFavorites] = useLocalStorage("favoriteContents", []);
 
   if (
     (!issueInfo && !issueInfoError) ||
     (!issueContent && !issueContentError)
   ) {
-    const [favorites, setFavorites] = useLocalStorage("favoriteContents", []);
-
     const heartIconClickHandler = (id) => {
       const newFavorites = [...favorites];
       const index = newFavorites.indexOf(id);
