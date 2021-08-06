@@ -1,9 +1,19 @@
 import Image from "next/image";
 import Link from "next/link";
+import { MdFavorite } from "react-icons/md";
 
-const ContentCard = ({ imgSrc, imgAlt, contentType, title, caption, link }) => {
+const ContentCard = ({
+  imgSrc,
+  imgAlt,
+  contentType,
+  title,
+  caption,
+  link,
+  heartIconClickHandler,
+  isLiked,
+}) => {
   return (
-    <div className="mx-auto my-8">
+    <div className="mx-auto my-8 relative">
       <Link href={link}>
         <a>
           <div className="flex flex-col justify-end w-64 md:w-96 h-24 md:h-56">
@@ -29,6 +39,14 @@ const ContentCard = ({ imgSrc, imgAlt, contentType, title, caption, link }) => {
           </div>
         </a>
       </Link>
+      <div className="flex justify-end absolute bottom-5 right-3">
+        <MdFavorite
+          className={`${
+            isLiked ? "text-red-500" : "text-gray-300"
+          } text-3xl cursor-pointer`}
+          onClick={heartIconClickHandler}
+        />
+      </div>
     </div>
   );
 };

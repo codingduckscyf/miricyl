@@ -7,6 +7,7 @@ import calloutImg from "../public/images/callOutBox.jpeg";
 import CategoriesSelection from "~/components/CategorySelection";
 import Categories from "./categories";
 import HeaderConditionSection from "~/components/HeaderConditionSection";
+
 const Index = () => {
   return (
     <div>

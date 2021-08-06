@@ -1,6 +1,5 @@
-/* eslint-disable @next/next/no-img-element */
-import React from "react";
 import Link from "next/link";
+import Image from "next/image";
 
 const Card = ({ url, title, id, link }) => {
   return (
@@ -9,11 +8,7 @@ const Card = ({ url, title, id, link }) => {
       <Link href={link}>
         <a>
           <article className="overflow-hidden rounded-lg shadow-lg">
-            <img
-              className="w-full"
-              src={url || "https://picsum.photos/100"}
-              alt={title || "Category"}
-            />
+            <Image className="w-full" src={url} alt={title || "Category"} />
             <header className="items-center justify-between leading-tight p-8 bg-white md:flex">
               <h1 className="text-2xl">{title || "Category"}</h1>
             </header>

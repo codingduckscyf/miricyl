@@ -3,7 +3,9 @@ import sql from "~/lib/postgres";
 const handler = async (req, res) => {
   if (req.method === "GET") {
     return res.status(200).json({
-      data: await sql`SELECT issues.*, categories.slug FROM issues JOIN categories ON categories.id = issues.category_id;`,
+
+      data: await sql`select issues.*, categories.slug from issues inner join categories on issues.category_id=categories.id;`,
+
     });
   }
   if (req.method === "POST") {
@@ -19,6 +21,9 @@ const handler = async (req, res) => {
         await sql`INSERT INTO issues (category_id, name, description) VALUES (${categoryID}, ${name}, ${description}) RETURNING *`;
       return res.status(200).json({
         message: `Issue with the id: ${issue.id} and name: ${issue.name} were added to the database`,
+
+        data: issue,
+
       });
     } else {
       return res

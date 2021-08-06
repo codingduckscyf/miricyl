@@ -4,6 +4,7 @@ import getColorForCategoryId from "~/lib/getColorForCategoryId";
 import convertSlugToTitle from "~/lib/convertSlugToTitle";
 
 const Categories = () => {
+
   const { data: issuesCategories, error } = useSWR("/api/issues");
   if (!issuesCategories && !error) {
     return <div>Loading...</div>;

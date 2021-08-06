@@ -2,7 +2,7 @@ import { useState } from "react";
 import Link from "next/link";
 import Dropdown from "./Dropdown";
 import CategoriesList from "./CategoriesList";
-
+import { MdFavorite } from "react-icons/md";
 const SiteHeader = () => {
   const [isExpanded, setIsExpanded] = useState(false);
 
@@ -45,12 +45,11 @@ const SiteHeader = () => {
                   About
                 </a>
               </Link>
-              <button
-                type="button"
-                className="inline-flex items-center p-2 md:p-3 m-6 border border-transparent rounded-lg shadow-sm text-white bg-blue-800 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 text-l md:text-xl w-max"
-              >
-                Bookmark
-              </button>
+              <Link href="/favorites">
+                <a>
+                  <MdFavorite className="text-4xl mx-8" />
+                </a>
+              </Link>
             </div>
           </div>
         ) : (
@@ -59,12 +58,11 @@ const SiteHeader = () => {
             <Link href="/about">
               <a className="hover:text-blue-800 mt-2">About</a>
             </Link>
-            <button
-              type="button"
-              className="inline-flex items-center py-2 px-4 border border-transparent rounded-lg shadow-sm text-white bg-blue-800 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 text-l md:text-xl"
-            >
-              Bookmark
-            </button>
+            <Link href="/favorites">
+              <a>
+                <MdFavorite className="text-4xl mx-8" />
+              </a>
+            </Link>
           </div>
         )}
       </nav>
