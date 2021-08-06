@@ -24,7 +24,7 @@ const CategoriesSelection = () => {
       </div>
       <div className="container mx-auto">
         <div className="flex flex-wrap items-center justify-center font-bold">
-          {categories.data.map(({ id, name, slug }) => (
+          {categories.data.map(({ id, slug }) => (
             <Card
               key={id}
               id={id}
