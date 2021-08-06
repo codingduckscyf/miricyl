@@ -7,6 +7,8 @@
     "lint": "lint-staged; pretty-quick --staged"
   },
   "dependencies": {
+    "bcrypt": "^5.0.1",
+    "jsonwebtoken": "^8.5.1",
     "next": "latest",
     "next-auth": "^3.27.3",
     "pg": "^8.7.1",
@@ -15,7 +17,8 @@
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-icons": "^4.2.0",
-    "swr": "^0.5.6"
+    "swr": "^0.5.6",
+    "yup": "^0.32.9"
   },
   "license": "MIT",
   "devDependencies": {
