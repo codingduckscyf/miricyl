@@ -28,7 +28,7 @@ const CategoriesSelection = () => {
             <Card
               key={id}
               id={id}
-              title={convertSlugToTitle(name)}
+              title={convertSlugToTitle(slug)}
               url={imgUrl}
               link={`/categories/${slug}`}
             />
