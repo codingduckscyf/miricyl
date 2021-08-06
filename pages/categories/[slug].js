@@ -32,18 +32,17 @@ const Post = () => {
         }
       />
       <div className="flex flex-col md:flex-row md:flex-wrap justify-end items-center md:justify-between my-12 sm:my-32 sm:mx-12">
-        {issuesCategories &&
-          issuesCategories.data
-            .filter((issue) => issue.slug === slug)
-            .map(({ id, category_id, name }) => (
-              <SubCatCard
-                key={id}
-                backgroundColor={getColorForCategoryId(category_id)}
-                title={name}
-                category={convertSlugToTitle(slug)}
-                link={`/issues/${id}`}
-              />
-            ))}
+        {issuesCategories.data
+          .filter((issue) => issue.slug === slug)
+          .map(({ id, category_id, name }) => (
+            <SubCatCard
+              key={id}
+              backgroundColor={getColorForCategoryId(category_id)}
+              title={name}
+              category={convertSlugToTitle(slug)}
+              link={`/issues/${id}`}
+            />
+          ))}
       </div>
     </Layout>
   );
