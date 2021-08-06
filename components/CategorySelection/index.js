@@ -2,6 +2,9 @@
 import useSWR from "swr";
 import React from "react";
 import Card from "./card";
+import mentalHealth from "../../public/images/mentalHealth.jpg";
+import socialRelationship from "../../public/images/socialRelationship.jpg";
+import lifeIssues from "../../public/images/lifeIssues.jpg";
 
 const CategoriesSelection = () => {
   const { data: categories, error } = useSWR("/api/categories");
@@ -14,7 +17,7 @@ const CategoriesSelection = () => {
     return <div>Not found.</div>;
   }
   return (
-    <div className=" mt-16 md:mt-32 mb-4 mx-10 flex flex-col flex-grow items-center justify-center">
+    <div className="mt-16 md:mt-32 mb-4 mx-10 flex flex-col flex-grow items-center justify-center">
       <div>
         <h1 className="font-bold text-4xl">What are you needing help with?</h1>
         <p className="mt-2 text-gray-500 text-xl md:text-2xl">
@@ -23,12 +26,18 @@ const CategoriesSelection = () => {
       </div>
       <div className="container mx-auto">
         <div className="flex flex-wrap items-center justify-center font-bold">
-          {categories.data.map(({ id, name, imgUrl, slug }) => (
+          {categories.data.map(({ id, name, slug }) => (
             <Card
               key={id}
               id={id}
               title={name}
-              url={imgUrl}
+              url={
+                slug === "mental-health"
+                  ? mentalHealth
+                  : slug === "life-issues"
+                  ? lifeIssues
+                  : socialRelationship
+              }
               link={`/${slug}`}
             />
           ))}

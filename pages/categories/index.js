@@ -4,6 +4,7 @@ import SubCatCard from "~/components/SubCatCard";
 const Categories = () => {
   const { data: issuesCategories } = useSWR("/api/issues");
   const { data: categories } = useSWR("/api/categories");
+
   return (
     <div>
       <div className="flex flex-col md:flex-row md:flex-wrap justify-end items-center md:justify-between mb-20 sm:mx-12">
