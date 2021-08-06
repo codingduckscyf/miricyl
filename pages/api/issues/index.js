@@ -18,7 +18,8 @@ const handler = async (req, res) => {
       const [issue] =
         await sql`INSERT INTO issues (category_id, name, description) VALUES (${categoryID}, ${name}, ${description}) RETURNING *`;
       return res.status(200).json({
-        message: `This is issue is was added: ${issue}`,
+        message: `Issue with the id: ${issue.id} and name: ${issue.name} were added to the database`,
+        data: issue,
       });
     } else {
       return res
