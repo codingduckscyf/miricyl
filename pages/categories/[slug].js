@@ -4,7 +4,8 @@ import useSWR from "swr";
 import Header from "~/components/Header";
 import SubCatCard from "~/components/SubCatCard";
 import headerImgCat from "../../public/images/headerImgCat.jpeg";
-import titleConvertor from "~/lib/titleConvertor";
+import convertSlugToTitle from "~/lib/convertSlugToTitle";
+import getColorForCategoryId from "~/lib/getColorForCategoryId";
 
 const Post = () => {
   const router = useRouter();
@@ -25,7 +26,7 @@ const Post = () => {
         backgroundColor="white"
         imgSrc={headerImgCat}
         imgAlt="Woman's hand"
-        title={titleConvertor(slug)}
+        title={convertSlugToTitle(slug)}
         caption={
           "Miricyl helps you find key, informative resources to guide you on your mental health journey"
         }
@@ -37,26 +38,9 @@ const Post = () => {
             .map(({ id, category_id, name }) => (
               <SubCatCard
                 key={id}
-                backgroundColor1={
-                  category_id === 1
-                    ? "yellow"
-                    : category_id === 2
-                    ? "green"
-                    : category_id === 3
-                    ? "indigo"
-                    : "indigo"
-                }
-                backgroundColor2={
-                  category_id === 1
-                    ? "yellow"
-                    : category_id === 2
-                    ? "green"
-                    : category_id === 3
-                    ? "indigo"
-                    : "indigo"
-                }
+                backgroundColor={getColorForCategoryId(category_id)}
                 title={name}
-                category={titleConvertor(slug)}
+                category={convertSlugToTitle(slug)}
                 link={`/issues/${id}`}
               />
             ))}

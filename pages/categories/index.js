@@ -1,7 +1,7 @@
 import useSWR from "swr";
 import SubCatCard from "~/components/SubCatCard";
 import getColorForCategoryId from "~/lib/getColorForCategoryId";
-import titleConvertor from "~/lib/titleConvertor";
+import convertSlugToTitle from "~/lib/convertSlugToTitle";
 const Categories = () => {
   const { data: issuesCategories } = useSWR("/api/issues");
 
@@ -14,7 +14,7 @@ const Categories = () => {
               key={id}
               backgroundColor={getColorForCategoryId(category_id)}
               title={name}
-              category={titleConvertor(slug)}
+              category={convertSlugToTitle(slug)}
               link={`issues/${id}`}
             />
           ))}
