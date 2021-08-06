@@ -16,15 +16,12 @@ const Index = () => {
 
   let filteredIssuesData =
     issuesCategories &&
-    issuesCategories.data.filter((entry) => {
-      return (
-        entry.name.toLowerCase().includes(searchInput.toLowerCase()) ||
-        entry.description.toLowerCase().includes(searchInput.toLowerCase()) ||
-        entry.slug.toLowerCase().includes(searchInput.toLowerCase())
-      );
-    });
+    issuesCategories.data.filter(({ name, description, slug }) =>
+      [name, description, slug].some((string) =>
+        string.toLowerCase().includes(searchInput.toLocaleLowerCase())
+      )
+    );
 
-  console.log(filteredIssuesData);
   return (
     <div>
       <SiteHeader />
