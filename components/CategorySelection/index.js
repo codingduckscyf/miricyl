@@ -3,6 +3,9 @@ import useSWR from "swr";
 import React from "react";
 import Card from "./card";
 import convertSlugToTitle from "~/lib/convertSlugToTitle";
+import mentalHealth from "../../public/images/mentalHealth.jpg";
+import socialRelationship from "../../public/images/socialRelationship.jpg";
+import lifeIssues from "../../public/images/lifeIssues.jpg";
 
 const CategoriesSelection = () => {
   const { data: categories, error } = useSWR("/api/categories");
@@ -29,7 +32,13 @@ const CategoriesSelection = () => {
               key={id}
               id={id}
               title={convertSlugToTitle(slug)}
-              url={imgUrl}
+              url={
+                slug === "mental-health"
+                  ? mentalHealth
+                  : slug === "life-issues"
+                  ? lifeIssues
+                  : socialRelationship
+              }
               link={`/categories/${slug}`}
             />
           ))}
