@@ -3,11 +3,7 @@ import SubCatCard from "~/components/SubCatCard";
 import getColorForCategoryId from "~/lib/getColorForCategoryId";
 import convertSlugToTitle from "~/lib/convertSlugToTitle";
 
-const Categories = ({ issuesCategories }) => {
-  const { data: categories } = useSWR("/api/categories");
-
-
-  const { data: issuesCategories, error } = useSWR("/api/issues");
+const Categories = ({ issuesCategories, error }) => {
   if (!issuesCategories && !error) {
     return <div>Loading...</div>;
   }
@@ -18,7 +14,7 @@ const Categories = ({ issuesCategories }) => {
   return (
     <div>
       <div className="flex flex-col md:flex-row md:flex-wrap justify-end items-center md:justify-between mb-20 sm:mx-12">
-        {issuesCategories.data.map(({ id, category_id, name, slug }) => (
+        {issuesCategories.map(({ id, category_id, name, slug }) => (
           <SubCatCard
             key={id}
             backgroundColor={getColorForCategoryId(category_id)}

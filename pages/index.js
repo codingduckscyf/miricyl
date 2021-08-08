@@ -11,7 +11,7 @@ import HeaderConditionSection from "~/components/HeaderConditionSection";
 import { useState } from "react";
 
 const Index = () => {
-  const { data: issuesCategories } = useSWR("/api/issues");
+  const { data: issuesCategories, error } = useSWR("/api/issues");
   const [searchInput, setSearchInput] = useState("");
 
   let filteredIssuesData =
@@ -48,7 +48,7 @@ const Index = () => {
         searchInput={searchInput}
         setSearchInput={setSearchInput}
       />
-      <Categories issuesCategories={filteredIssuesData} />
+      <Categories issuesCategories={filteredIssuesData} error={error} />
       <Footer />
     </div>
   );
