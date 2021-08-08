@@ -3,9 +3,11 @@ import Layout from "~/components/Layout/Layout";
 import useSWR from "swr";
 import Header from "~/components/Header";
 import SubCatCard from "~/components/SubCatCard";
-import headerImgCat from "../../public/images/headerImgCat.jpeg";
 import convertSlugToTitle from "~/lib/convertSlugToTitle";
 import getColorForCategoryId from "~/lib/getColorForCategoryId";
+import mentalHealth from "../../public/images/mentalHealth.jpg";
+import socialRelationship from "../../public/images/socialRelationship.jpg";
+import lifeIssues from "../../public/images/lifeIssues.jpg";
 
 const Post = () => {
   const router = useRouter();
@@ -24,7 +26,13 @@ const Post = () => {
     <Layout title={slug}>
       <Header
         backgroundColor="white"
-        imgSrc={headerImgCat}
+        imgSrc={
+          slug === "mental-health"
+            ? mentalHealth
+            : slug === "life-issues"
+            ? lifeIssues
+            : socialRelationship
+        }
         imgAlt="Woman's hand"
         title={convertSlugToTitle(slug)}
         caption={
