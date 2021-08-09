@@ -9,6 +9,11 @@ import lifeIssues from "../../public/images/lifeIssues.jpg";
 
 const CategoriesSelection = () => {
   const { data: categories, error } = useSWR("/api/categories");
+  const urlLookup = {
+    "mental-health": mentalHealth,
+    "life-issues": lifeIssues,
+    "social-relationship": socialRelationship,
+  };
 
   if (!categories && !error) {
     return <div>Loading...</div>;
@@ -32,13 +37,8 @@ const CategoriesSelection = () => {
               key={id}
               id={id}
               title={convertSlugToTitle(slug)}
-              url={
-                slug === "mental-health"
-                  ? mentalHealth
-                  : slug === "life-issues"
-                  ? lifeIssues
-                  : socialRelationship
-              }
+              url={urlLookup[slug]}
+
               link={`/categories/${slug}`}
             />
           ))}
