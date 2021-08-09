@@ -25,6 +25,7 @@ const handler = async (req, res) => {
         data: issue,
 
       });
+
     } else {
       return res
         .status(400)
