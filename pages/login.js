@@ -56,7 +56,7 @@ const Login = () => {
         <p className="text-center">Login</p>
         <label>Email</label>
         <input
-          className="border rounded-sm border-none placeholder-blue-50::placeholder"
+          className="border rounded-sm border-none"
           name="email"
           type="email"
           value={email}
@@ -64,7 +64,7 @@ const Login = () => {
         />
         <label>Password</label>
         <input
-          className="border rounded-sm border-none placeholder-blue-50::placeholder"
+          className="border rounded-sm border-none"
           name="password"
           type="password"
           value={password}
