@@ -7,15 +7,15 @@ const social = ["Facebook", "Instagram", "Twitter"];
 
 const Footer = () => {
   return (
-    <footer className="p-5 bg-gray-100">
+    <footer className="bg-gray-100 w-full">
       <div className="container mx-auto">
-        <div className="grid grid-cols-2 md:grid-cols-4">
+        <div className="flex justify-around">
           <FooterList listName="Categories" listItems={categories} />
           <FooterList listName="Topics" listItems={topics} />
           <FooterList listName="About" listItems={about} />
           <FooterList listName="Social" listItems={social} />
         </div>
-        <p className="text-gray-500 pt-32 text-sm">
+        <p className="text-gray-500 pt-7 text-center pb-3 text-sm">
           Copyright {new Date().getFullYear()} Miricyl
         </p>
       </div>
