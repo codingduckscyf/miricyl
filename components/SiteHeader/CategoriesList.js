@@ -25,7 +25,7 @@ const categories = [
 
 const CategoriesList = () => {
   return (
-    <div>
+    <div className="border rounded-md border-none overflow-hidden">
       {categories.map((category) => (
         <Link href={category.link} key={category.id}>
           <a className="block hover:bg-gray-200 p-6">
