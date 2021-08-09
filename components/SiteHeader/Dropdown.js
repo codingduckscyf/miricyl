@@ -15,7 +15,7 @@ const Dropdown = () => {
       <div
         className={`${
           isHidden ? "hidden" : "block"
-        } absolute w-96 bg-gray-50 z-10 shadow p-8 my-8 border border-gray-200 rounded`}
+        } absolute w-96 bg-gray-50 z-10`}
       >
         <CategoriesList />
       </div>
