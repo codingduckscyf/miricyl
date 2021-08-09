@@ -10,6 +10,12 @@ import socialRelationship from "../../public/images/socialRelationship.jpg";
 import lifeIssues from "../../public/images/lifeIssues.jpg";
 
 const Post = () => {
+  const urlLookup = {
+    "mental-health": mentalHealth,
+    "life-issues": lifeIssues,
+    "social-relationship": socialRelationship,
+  };
+
   const router = useRouter();
   const { slug } = router.query;
   const { data: issuesCategories, error } = useSWR("/api/issues");
@@ -26,13 +32,7 @@ const Post = () => {
     <Layout title={slug}>
       <Header
         backgroundColor="white"
-        imgSrc={
-          slug === "mental-health"
-            ? mentalHealth
-            : slug === "life-issues"
-            ? lifeIssues
-            : socialRelationship
-        }
+        imgSrc={urlLookup[slug]}
         imgAlt="Woman's hand"
         title={convertSlugToTitle(slug)}
         caption={
