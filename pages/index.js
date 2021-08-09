@@ -1,3 +1,4 @@
+import useSWR from "swr";
 import Footer from "~/components/Footer";
 import CalloutBox from "~/components/CalloutBox";
 import Header from "~/components/Header";
@@ -7,8 +8,20 @@ import calloutImg from "../public/images/callOutBox.jpeg";
 import CategoriesSelection from "~/components/CategorySelection";
 import Categories from "./categories";
 import HeaderConditionSection from "~/components/HeaderConditionSection";
+import { useState } from "react";
 
 const Index = () => {
+  const { data: issuesCategories, error } = useSWR("/api/issues");
+  const [searchInput, setSearchInput] = useState("");
+
+  let filteredIssuesData =
+    issuesCategories &&
+    issuesCategories.data.filter(({ name, description, slug }) =>
+      [name, description, slug].some((string) =>
+        string.toLowerCase().includes(searchInput.toLocaleLowerCase())
+      )
+    );
+
   return (
     <div>
       <SiteHeader />
@@ -31,8 +44,11 @@ const Index = () => {
         buttonText="Learn more about Miricyl's vision"
         buttonLink="/mental-health"
       />
-      <HeaderConditionSection />
-      <Categories />
+      <HeaderConditionSection
+        searchInput={searchInput}
+        setSearchInput={setSearchInput}
+      />
+      <Categories issuesCategories={filteredIssuesData} error={error} />
       <Footer />
     </div>
   );

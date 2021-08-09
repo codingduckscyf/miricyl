@@ -38,6 +38,7 @@ const CategoriesSelection = () => {
               id={id}
               title={convertSlugToTitle(slug)}
               url={urlLookup[slug]}
+
               link={`/categories/${slug}`}
             />
           ))}
