@@ -15,7 +15,7 @@ const Content = ({
             <ContentCard
               key={id}
               isLiked={favorites.includes(id)}
-              imgSrc={img_url ?? "https://picsum.photos/100"}
+              imgSrc={img_url ? img_url : "https://picsum.photos/100"}
               imgAlt={title}
               contentType={content_type}
               title={title}
