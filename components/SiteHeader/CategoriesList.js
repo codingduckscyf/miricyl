@@ -6,20 +6,20 @@ const categories = [
     id: 1,
     title: "Mental Health",
     description: "Learn about tips, mental health issues",
-    link: "/mental-health",
+    link: "/categories/mental-health",
   },
   {
     id: 2,
     title: "Life Issues",
     description: "Learn about life issues, product updates and company culture",
-    link: "/life-issues",
+    link: "/categories/life-issues",
   },
   {
     id: 3,
     title: "Social & Relationships",
     description:
       "Learn about social and relationships issues, product updates and company culture",
-    link: "/social-relationship",
+    link: "/categories/social-relationship",
   },
 ];
 
