@@ -1,11 +1,12 @@
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import useSWR from "swr";
 import * as yup from "yup";
 
 const Form = ({ data, submit }) => {
   const { data: issuesData, error: issuesError } = useSWR(`/api/issues`);
+  const [errors, setErrors] = useState([]);
 
-  // destructuring data
+  // destructuring data obj
   const {
     title: contentTitle,
     description: contentDescription,
@@ -14,6 +15,7 @@ const Form = ({ data, submit }) => {
     video_url: contentVideoUrl,
   } = data;
 
+  // for ref
   const titleRef = useRef(null);
   const descriptionRef = useRef(null);
   const contentTypeRef = useRef(null);
@@ -29,8 +31,17 @@ const Form = ({ data, submit }) => {
     return <h1>Not found</h1>;
   }
 
-  const handleSubmit = (event) => {
+  const dataSchema = yup.object().shape({
+    title: yup.string().min(1).required(),
+    description: yup.string().required(),
+    content_type: yup.string().required(),
+    img_url: yup.string().url().required(),
+    video_url: yup.string().url(),
+  });
+
+  const handleSubmit = async (event) => {
     event.preventDefault();
+
     // data for page
     const data = {
       title: titleRef.current.value,
@@ -41,17 +52,29 @@ const Form = ({ data, submit }) => {
       relations: Number(issueIdRef.current.value),
     };
 
-    submit(data);
+    try {
+      await dataSchema.validate(data, { abortEarly: false });
+      submit(data);
+    } catch (error) {
+      console.log(error.path);
+      console.log(error.inner);
+      setErrors(error.inner.map((el) => el.path));
+    }
   };
 
   return (
-    <div className="p-20 w-full">
+    <div className="p-20 w-full h-auto">
+      {errors.length > 0 && (
+        <h1 className="text-center text-4xl text-red-600">
+          Please check your form
+        </h1>
+      )}
       <form
-        className="shadow w-full h-4/5 p-8 mx-auto text-center bg-gray-100"
+        className="shadow w-4/5 h-auto p-8 mx-auto text-center bg-gray-100"
         onSubmit={handleSubmit}
       >
         <div className="row">
-          <div className="col-25 float-left w-1/4 mt-2">
+          <div className="col-25 float-left w-1/4 mt-2 text-right">
             <label htmlFor="title" className="inline-block p-4">
               Title:
             </label>
@@ -63,15 +86,16 @@ const Form = ({ data, submit }) => {
               id="title"
               name="title"
               defaultValue={contentTitle}
-              className="w-3/4 p-4 border border-gray-600 rounded resize-y"
+              className={`${
+                errors.includes("title") && "bg-red-200"
+              } w-3/4 p-4 border border-gray-600 rounded resize-y`}
               placeholder="Content title..."
-              required
             />
           </div>
         </div>
 
         <div className="row">
-          <div className="col-25 float-left w-1/4 mt-2">
+          <div className="col-25 float-left w-1/4 mt-2 text-right">
             <label htmlFor="description" className="inline-block p-4">
               Description:
             </label>
@@ -83,15 +107,16 @@ const Form = ({ data, submit }) => {
               id="description"
               name="description"
               defaultValue={contentDescription}
-              className="w-3/4 h-40 p-4 border border-gray-600 rounded resize-y"
+              className={`${
+                errors.includes("description") && "bg-red-200"
+              } w-3/4 h-40 p-4 border border-gray-600 rounded resize-y`}
               placeholder="Content description..."
-              required
             />
           </div>
         </div>
 
         <div className="row">
-          <div className="col-25 float-left w-1/4 mt-2">
+          <div className="col-25 float-left w-1/4 mt-2 text-right">
             <label htmlFor="content_type" className="inline-block p-4">
               Content Type:
             </label>
@@ -103,15 +128,16 @@ const Form = ({ data, submit }) => {
               id="content_type"
               name="content_type"
               defaultValue={contentType}
-              className="w-3/4 p-4 border border-gray-600 rounded resize-y"
+              className={`${
+                errors.includes("content_type") && "bg-red-200"
+              } w-3/4 p-4 border border-gray-600 rounded resize-y`}
               placeholder="Content type..."
-              required
             />
           </div>
         </div>
 
         <div className="row">
-          <div className="col-25 float-left w-1/4 mt-2">
+          <div className="col-25 float-left w-1/4 mt-2 text-right">
             <label htmlFor="img_url" className="inline-block p-4">
               Image Url:
             </label>
@@ -123,15 +149,16 @@ const Form = ({ data, submit }) => {
               id="img_url"
               name="img_url"
               defaultValue={contentImgUrl}
-              className="w-3/4 p-4 border border-gray-600 rounded resize-y"
+              className={`${
+                errors.includes("img_url") && "bg-red-200"
+              } w-3/4 p-4 border border-gray-600 rounded resize-y`}
               placeholder="Paste img url here..."
-              required
             />
           </div>
         </div>
 
         <div className="row">
-          <div className="col-25 float-left w-1/4 mt-2">
+          <div className="col-25 float-left w-1/4 mt-2 text-right">
             <label htmlFor="video_url" className="inline-block p-4">
               Video Url:
             </label>
@@ -143,14 +170,16 @@ const Form = ({ data, submit }) => {
               id="video_url"
               name="video_url"
               defaultValue={contentVideoUrl}
-              className="w-3/4 p-4 border border-gray-600 rounded resize-y"
+              className={`${
+                errors.includes("video_url") && "bg-red-200"
+              } w-3/4 p-4 border border-gray-600 rounded resize-y`}
               placeholder="Video url..."
             />
           </div>
         </div>
 
         <div className="row">
-          <div className="col-25 float-left w-1/4 mt-2">
+          <div className="col-25 float-left w-1/4 mt-2 text-right">
             <label htmlFor="issues" className="inline-block p-4">
               Choose an issue:
             </label>
@@ -172,11 +201,13 @@ const Form = ({ data, submit }) => {
             </select>
           </div>
         </div>
-        <input
-          type="submit"
-          value="Submit"
-          className="border-2 cursor-pointer rounded-2xl text-white bg-blue-600 py-3 px-8 mt-2"
-        />
+        <div>
+          <input
+            type="submit"
+            value="Submit"
+            className="border-2 cursor-pointer rounded-2xl text-white bg-blue-600 py-3 px-8 mt-2"
+          />
+        </div>
       </form>
     </div>
   );
