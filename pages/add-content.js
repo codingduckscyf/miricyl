@@ -7,6 +7,7 @@ const AddContentPage = () => {
   const router = useRouter();
   const [error, setError] = useState(false);
 
+  // send data obj to api/content
   const handleAddContentSubmit = async (data) => {
     setError(false);
     const response = await fetch("/api/content", {
@@ -18,29 +19,36 @@ const AddContentPage = () => {
       body: JSON.stringify(data),
     });
 
+    // if response ok redirect to issue page
     if (response.ok) {
-      router.push(`/issues/${data.relations[0].id}`);
+      router.push(`/issues/${data.relations}`);
     } else {
       setError(true);
     }
   };
 
-  //data for form
+  //data obj for the form
   const data = {
     title: "",
     description: "",
     content_type: "",
     img_url: "",
     video_url: "",
-    relations: [],
+    relations: "",
   };
 
   return (
     <Layout>
       <div>
-        {error && <h1>Please check your form</h1>}
-
-        <h1 className="bg-yellow-400 p-32 text-6xl">Well hello again</h1>
+        <h1 className="bg-yellow-400 p-20 text-center text-2xl">
+          Here you can add content for any category. Just fill out the form
+          below and submit it
+        </h1>
+        {error && (
+          <h1 className="text-center text-4xl text-red-600">
+            Please check your form
+          </h1>
+        )}
         <Form data={data} submit={handleAddContentSubmit} />
       </div>
     </Layout>
