@@ -4,8 +4,7 @@ import * as yup from "yup";
 
 const Form = ({ data, submit }) => {
   const { data: issuesData, error: issuesError } = useSWR(`/api/issues`);
-  const { data: categoriesData, error: categoriesError } =
-    useSWR("/api/categories");
+
   // destructuring data
   const {
     title: contentTitle,
@@ -21,13 +20,12 @@ const Form = ({ data, submit }) => {
   const imgUrlRef = useRef(null);
   const videoUrlRef = useRef(null);
   const issueIdRef = useRef(null);
-  const categoryIdRef = useRef(null);
 
-  if ((!issuesData && !issuesError) || (!categoriesData && !categoriesError)) {
+  if (!issuesData && !issuesError) {
     return <h1>Loading...</h1>;
   }
 
-  if (!issuesData || !categoriesData) {
+  if (!issuesData) {
     return <h1>Not found</h1>;
   }
 
@@ -40,123 +38,145 @@ const Form = ({ data, submit }) => {
       content_type: contentTypeRef.current.value,
       img_url: imgUrlRef.current.value,
       video_url: videoUrlRef.current.value,
-      relations: [
-        {
-          id: Number(issueIdRef.current.value),
-          category_id: Number(categoryIdRef.current.value),
-        },
-      ],
+      relations: Number(issueIdRef.current.value),
     };
 
     submit(data);
   };
 
   return (
-    <div className="h-screen p-20 bg-blue-200">
+    <div className="p-20 w-full">
       <form
-        action=""
-        className="bg-green-300 w-3/4 h-4/5 p-8 mx-auto text-center"
+        className="shadow w-full h-4/5 p-8 mx-auto text-center bg-gray-100"
         onSubmit={handleSubmit}
       >
         <div className="row">
           <div className="col-25 float-left w-1/4 mt-2">
-            <label htmlFor="fname" className="inline-block p-4">
-              First Name
+            <label htmlFor="title" className="inline-block p-4">
+              Title:
             </label>
           </div>
           <div className="col-75 float-left w-3/4 mt-2">
             <input
+              ref={titleRef}
               type="text"
-              id="fname"
-              name="firstname"
-              placeholder="Your name.."
-              className="w-3/4 p-4 border border-indigo-600 resize-y bg-gray-300"
+              id="title"
+              name="title"
+              defaultValue={contentTitle}
+              className="w-3/4 p-4 border border-gray-600 rounded resize-y"
+              placeholder="Content title..."
+              required
             />
           </div>
         </div>
 
-        <div>
-          <label htmlFor="title">Title:</label>
-          <input
-            ref={titleRef}
-            type="text"
-            id="title"
-            name="title"
-            defaultValue={contentTitle}
-            className="border-2 border-indigo-600 mb-12"
-          />
-          <br></br>
-          <label htmlFor="description">Description:</label>
-          <input
-            ref={descriptionRef}
-            type="text"
-            id="description"
-            name="description"
-            defaultValue={contentDescription}
-            className="border-2 border-indigo-600 mb-12"
-          />
-          <br></br>
-          <label htmlFor="content_type">Content Type:</label>
-          <input
-            ref={contentTypeRef}
-            type="text"
-            id="content_type"
-            name="content_type"
-            defaultValue={contentType}
-            className="border-2 border-indigo-600 mb-12"
-          />
-          <br></br>
-          <label htmlFor="img_url">Image Url:</label>
-          <input
-            ref={imgUrlRef}
-            type="text"
-            id="img_url"
-            name="img_url"
-            defaultValue={contentImgUrl}
-            className="border-2 border-indigo-600 mb-12"
-          />
-          <br></br>
-          <label htmlFor="video_url">Video Url:</label>
-          <input
-            ref={videoUrlRef}
-            type="text"
-            id="video_url"
-            name="video_url"
-            defaultValue={contentVideoUrl}
-            className="border-2 border-indigo-600 mb-12"
-          />
-          <br></br>
+        <div className="row">
+          <div className="col-25 float-left w-1/4 mt-2">
+            <label htmlFor="description" className="inline-block p-4">
+              Description:
+            </label>
+          </div>
+          <div className="col-75 float-left w-3/4 mt-2">
+            <textarea
+              ref={descriptionRef}
+              type="text"
+              id="description"
+              name="description"
+              defaultValue={contentDescription}
+              className="w-3/4 h-40 p-4 border border-gray-600 rounded resize-y"
+              placeholder="Content description..."
+              required
+            />
+          </div>
         </div>
-        <label htmlFor="issues">Choose an issue:</label>
-        <select ref={issueIdRef} className="select" name="issues" id="issues">
-          {issuesData.data.map((issue) => {
-            return (
-              <option key={issue.id} value={issue.id}>
-                {issue.name}
-              </option>
-            );
-          })}
-        </select>
-        <label htmlFor="categories">Choose category:</label>
-        <select
-          ref={categoryIdRef}
-          className="select"
-          name="categories"
-          id="categories"
-        >
-          {categoriesData.data.map((category) => {
-            return (
-              <option key={category.id} value={category.id}>
-                {category.name}
-              </option>
-            );
-          })}
-        </select>
+
+        <div className="row">
+          <div className="col-25 float-left w-1/4 mt-2">
+            <label htmlFor="content_type" className="inline-block p-4">
+              Content Type:
+            </label>
+          </div>
+          <div className="col-75 float-left w-3/4 mt-2">
+            <input
+              ref={contentTypeRef}
+              type="text"
+              id="content_type"
+              name="content_type"
+              defaultValue={contentType}
+              className="w-3/4 p-4 border border-gray-600 rounded resize-y"
+              placeholder="Content type..."
+              required
+            />
+          </div>
+        </div>
+
+        <div className="row">
+          <div className="col-25 float-left w-1/4 mt-2">
+            <label htmlFor="img_url" className="inline-block p-4">
+              Image Url:
+            </label>
+          </div>
+          <div className="col-75 float-left w-3/4 mt-2">
+            <input
+              ref={imgUrlRef}
+              type="text"
+              id="img_url"
+              name="img_url"
+              defaultValue={contentImgUrl}
+              className="w-3/4 p-4 border border-gray-600 rounded resize-y"
+              placeholder="Paste img url here..."
+              required
+            />
+          </div>
+        </div>
+
+        <div className="row">
+          <div className="col-25 float-left w-1/4 mt-2">
+            <label htmlFor="video_url" className="inline-block p-4">
+              Video Url:
+            </label>
+          </div>
+          <div className="col-75 float-left w-3/4 mt-2">
+            <input
+              ref={videoUrlRef}
+              type="text"
+              id="video_url"
+              name="video_url"
+              defaultValue={contentVideoUrl}
+              className="w-3/4 p-4 border border-gray-600 rounded resize-y"
+              placeholder="Video url..."
+            />
+          </div>
+        </div>
+
+        <div className="row">
+          <div className="col-25 float-left w-1/4 mt-2">
+            <label htmlFor="issues" className="inline-block p-4">
+              Choose an issue:
+            </label>
+          </div>
+          <div className="col-75 float-left w-3/4 mt-2">
+            <select
+              ref={issueIdRef}
+              name="issues"
+              id="issues"
+              className="w-3/4 p-4 border border-gray-600 rounded resize-y"
+            >
+              {issuesData.data.map((issue) => {
+                return (
+                  <option key={issue.id} value={issue.id}>
+                    {issue.name}
+                  </option>
+                );
+              })}
+            </select>
+          </div>
+        </div>
         <input
           type="submit"
           value="Submit"
-          className="border-2 border-red-600"
-        ></input>
+          className="border-2 cursor-pointer rounded-2xl text-white bg-blue-600 py-3 px-8 mt-2"
+        />
       </form>
     </div>
   );
