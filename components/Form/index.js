@@ -64,19 +64,19 @@ const Form = ({ data, submit }) => {
 
   return (
     <div className="p-20 w-full h-auto">
-      {errors.length > 0 && (
-        <h1 className="text-center text-4xl text-red-600">
-          Please check your form
-        </h1>
-      )}
       <form
         className="shadow w-4/5 h-auto p-8 mx-auto text-center bg-gray-100"
         onSubmit={handleSubmit}
       >
+        {errors.length > 0 && (
+          <h1 className="text-center text-2xl mb-2 text-red-600">
+            Please fill all required fields
+          </h1>
+        )}
         <div className="row">
           <div className="col-25 float-left w-1/4 mt-2 text-right">
             <label htmlFor="title" className="inline-block p-4">
-              Title:
+              Title<span className="text-red-600">*</span>
             </label>
           </div>
           <div className="col-75 float-left w-3/4 mt-2">
@@ -87,7 +87,7 @@ const Form = ({ data, submit }) => {
               name="title"
               defaultValue={contentTitle}
               className={`${
-                errors.includes("title") && "bg-red-200"
+                errors.includes("title") && "border-red-600"
               } w-3/4 p-4 border border-gray-600 rounded resize-y`}
               placeholder="Content title..."
             />
@@ -97,7 +97,7 @@ const Form = ({ data, submit }) => {
         <div className="row">
           <div className="col-25 float-left w-1/4 mt-2 text-right">
             <label htmlFor="description" className="inline-block p-4">
-              Description:
+              Description <span className="text-red-600">*</span>
             </label>
           </div>
           <div className="col-75 float-left w-3/4 mt-2">
@@ -108,7 +108,7 @@ const Form = ({ data, submit }) => {
               name="description"
               defaultValue={contentDescription}
               className={`${
-                errors.includes("description") && "bg-red-200"
+                errors.includes("description") && "border-red-600"
               } w-3/4 h-40 p-4 border border-gray-600 rounded resize-y`}
               placeholder="Content description..."
             />
@@ -118,7 +118,7 @@ const Form = ({ data, submit }) => {
         <div className="row">
           <div className="col-25 float-left w-1/4 mt-2 text-right">
             <label htmlFor="content_type" className="inline-block p-4">
-              Content Type:
+              Content Type<span className="text-red-600">*</span>
             </label>
           </div>
           <div className="col-75 float-left w-3/4 mt-2">
@@ -129,7 +129,7 @@ const Form = ({ data, submit }) => {
               name="content_type"
               defaultValue={contentType}
               className={`${
-                errors.includes("content_type") && "bg-red-200"
+                errors.includes("content_type") && "border-red-600"
               } w-3/4 p-4 border border-gray-600 rounded resize-y`}
               placeholder="Content type..."
             />
@@ -139,7 +139,7 @@ const Form = ({ data, submit }) => {
         <div className="row">
           <div className="col-25 float-left w-1/4 mt-2 text-right">
             <label htmlFor="img_url" className="inline-block p-4">
-              Image Url:
+              Image Url<span className="text-red-600">*</span>
             </label>
           </div>
           <div className="col-75 float-left w-3/4 mt-2">
@@ -150,7 +150,7 @@ const Form = ({ data, submit }) => {
               name="img_url"
               defaultValue={contentImgUrl}
               className={`${
-                errors.includes("img_url") && "bg-red-200"
+                errors.includes("img_url") && "border-red-600"
               } w-3/4 p-4 border border-gray-600 rounded resize-y`}
               placeholder="Paste img url here..."
             />
@@ -160,7 +160,7 @@ const Form = ({ data, submit }) => {
         <div className="row">
           <div className="col-25 float-left w-1/4 mt-2 text-right">
             <label htmlFor="video_url" className="inline-block p-4">
-              Video Url:
+              Video Url<span className="text-red-600">*</span>
             </label>
           </div>
           <div className="col-75 float-left w-3/4 mt-2">
@@ -171,7 +171,7 @@ const Form = ({ data, submit }) => {
               name="video_url"
               defaultValue={contentVideoUrl}
               className={`${
-                errors.includes("video_url") && "bg-red-200"
+                errors.includes("video_url") && "border-red-600"
               } w-3/4 p-4 border border-gray-600 rounded resize-y`}
               placeholder="Video url..."
             />

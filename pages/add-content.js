@@ -40,12 +40,12 @@ const AddContentPage = () => {
   return (
     <Layout>
       <div>
-        <h1 className="bg-yellow-400 p-20 text-center text-2xl">
-          Here you can add content for any category. Just fill out the form
+        <h1 className="text-center text-2xl px-32">
+          To add new content for mental health issues just fill out the form
           below and submit it
         </h1>
         {error && (
-          <h1 className="text-center text-4xl text-red-600">
+          <h1 className="text-center text-2xl text-red-600">
             Please check your form
           </h1>
         )}
