@@ -1,16 +1,21 @@
 import SiteHeader from "~/components/SiteHeader";
 import Footer from "~/components/Footer";
-import React, { useState } from "react";
-import Router from "next/router";
+import { useState } from "react";
+import { useRouter } from "next/router";
+
+// const router = useRouter();
+// const { slug } = router.query;
+// const { data: issuesCategories, error } = useSWR("/api/issues");
 
 const Login = () => {
-  const [loginError, setLoginError] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [loginError, setLoginError] = useState("");
+
+  const router = useRouter();
 
   const handleLogin = async (e) => {
     e.preventDefault();
-    //call api
     fetch("/api/auth/signin", {
       method: "POST",
       headers: {
@@ -21,17 +26,19 @@ const Login = () => {
         password,
       }),
     })
-      .then((r) => {
-        return r.json();
+      .then((res) => {
+        return res.json();
       })
       .then((data) => {
         if (data && data.error) {
           setLoginError(data.message);
         }
         if (data && data.token) {
-          console.log(data);
-          // cookie.set('token', data.token, { expires: 2 });
-          // Router.push('/');
+          if (data.is_admin) {
+            router.push("/AdminRules");
+          } else {
+            router.push("/");
+          }
         }
       });
   };

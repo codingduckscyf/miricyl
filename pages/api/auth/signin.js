@@ -40,20 +40,24 @@ const handler = async ({ method, body: { email, password } }, res) => {
             );
             return res
               .status(200)
-              .send({ token: jsonToken, email: schemaValid.email });
+              .send({
+                token: jsonToken,
+                email: schemaValid.email,
+                is_admin: userExists[0].is_admin,
+              });
           } else {
             return res
               .status(400)
-              .json({ message: "Email or password incorrect" });
+              .json({ message: "Invalid email or password" });
           }
         } catch (error) {
           res.status(500).json({ errorMessage: error });
         }
       } else {
-        return res.status(400).send({ message: "Email or password incorrect" });
+        return res.status(400).send({ message: "Invalid email or password" });
       }
     } else {
-      return res.status(400).json({ message: "Not valid data" });
+      return res.status(400).json({ message: "Invalid email or password" });
     }
   }
 };
