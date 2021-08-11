@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { MdFavorite } from "react-icons/md";
+import { GrEdit } from "react-icons/gr";
 
 const ContentCard = ({
   imgSrc,
@@ -21,7 +22,6 @@ const ContentCard = ({
               className="rounded-t-2xl w-full object-cover md:w-full"
               src={imgSrc}
               alt={imgAlt}
-              // layout="fill"
               width="300"
               height="300"
             ></Image>
@@ -47,6 +47,13 @@ const ContentCard = ({
           onClick={heartIconClickHandler}
         />
       </div>
+      {/* {editUrl && (
+        <Link href={editUrl}
+        <div className="flex justify-end absolute bottom-5 left-3">
+          <GrEdit className="text-2xl cursor-pointer" />
+        </div>
+        </Link>
+      )} */}
     </div>
   );
 };

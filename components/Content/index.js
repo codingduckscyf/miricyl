@@ -22,6 +22,7 @@ const Content = ({
               caption={description}
               link={video_url ?? "https://en.wikipedia.org/wiki/Mental_health"}
               heartIconClickHandler={() => heartIconClickHandler(id)}
+              editUrl={`update-content/${id}`}
             />
           )
         )}
