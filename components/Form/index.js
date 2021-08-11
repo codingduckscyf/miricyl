@@ -73,13 +73,13 @@ const Form = ({ data, submit }) => {
             Please fill all required fields
           </h1>
         )}
-        <div className="row">
-          <div className="col-25 float-left w-1/4 mt-2 text-right">
+        <div>
+          <div className="float-left w-1/4 mt-2 text-right">
             <label htmlFor="title" className="inline-block p-4">
               Title<span className="text-red-600">*</span>
             </label>
           </div>
-          <div className="col-75 float-left w-3/4 mt-2">
+          <div className="float-left w-3/4 mt-2">
             <input
               ref={titleRef}
               type="text"
@@ -94,13 +94,13 @@ const Form = ({ data, submit }) => {
           </div>
         </div>
 
-        <div className="row">
-          <div className="col-25 float-left w-1/4 mt-2 text-right">
+        <div>
+          <div className="float-left w-1/4 mt-2 text-right">
             <label htmlFor="description" className="inline-block p-4">
               Description <span className="text-red-600">*</span>
             </label>
           </div>
-          <div className="col-75 float-left w-3/4 mt-2">
+          <div className="float-left w-3/4 mt-2">
             <textarea
               ref={descriptionRef}
               type="text"
@@ -115,13 +115,13 @@ const Form = ({ data, submit }) => {
           </div>
         </div>
 
-        <div className="row">
-          <div className="col-25 float-left w-1/4 mt-2 text-right">
+        <div>
+          <div className="float-left w-1/4 mt-2 text-right">
             <label htmlFor="content_type" className="inline-block p-4">
               Content Type<span className="text-red-600">*</span>
             </label>
           </div>
-          <div className="col-75 float-left w-3/4 mt-2">
+          <div className="float-left w-3/4 mt-2">
             <input
               ref={contentTypeRef}
               type="text"
@@ -136,13 +136,13 @@ const Form = ({ data, submit }) => {
           </div>
         </div>
 
-        <div className="row">
-          <div className="col-25 float-left w-1/4 mt-2 text-right">
+        <div>
+          <div className="float-left w-1/4 mt-2 text-right">
             <label htmlFor="img_url" className="inline-block p-4">
               Image Url<span className="text-red-600">*</span>
             </label>
           </div>
-          <div className="col-75 float-left w-3/4 mt-2">
+          <div className="float-left w-3/4 mt-2">
             <input
               ref={imgUrlRef}
               type="text"
@@ -157,13 +157,13 @@ const Form = ({ data, submit }) => {
           </div>
         </div>
 
-        <div className="row">
-          <div className="col-25 float-left w-1/4 mt-2 text-right">
+        <div>
+          <div className="float-left w-1/4 mt-2 text-right">
             <label htmlFor="video_url" className="inline-block p-4">
               Video Url<span className="text-red-600">*</span>
             </label>
           </div>
-          <div className="col-75 float-left w-3/4 mt-2">
+          <div className="float-left w-3/4 mt-2">
             <input
               ref={videoUrlRef}
               type="text"
@@ -178,13 +178,13 @@ const Form = ({ data, submit }) => {
           </div>
         </div>
 
-        <div className="row">
-          <div className="col-25 float-left w-1/4 mt-2 text-right">
+        <div>
+          <div className="float-left w-1/4 mt-2 text-right">
             <label htmlFor="issues" className="inline-block p-4">
               Choose an issue:
             </label>
           </div>
-          <div className="col-75 float-left w-3/4 mt-2">
+          <div className="float-left w-3/4 mt-2">
             <select
               ref={issueIdRef}
               name="issues"
