@@ -22,6 +22,7 @@ const CategoriesSelection = () => {
   if (!categories) {
     return <div>Not found.</div>;
   }
+
   return (
     <div className="mt-16 md:mt-32 mb-4 mx-10 flex flex-col flex-grow items-center justify-center">
       <div>
@@ -38,7 +39,6 @@ const CategoriesSelection = () => {
               id={id}
               title={convertSlugToTitle(slug)}
               url={urlLookup[slug]}
-
               link={`/categories/${slug}`}
             />
           ))}
