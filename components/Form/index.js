@@ -56,8 +56,6 @@ const Form = ({ data, submit }) => {
       await dataSchema.validate(data, { abortEarly: false });
       submit(data);
     } catch (error) {
-      console.log(error.path);
-      console.log(error.inner);
       setErrors(error.inner.map((el) => el.path));
     }
   };
