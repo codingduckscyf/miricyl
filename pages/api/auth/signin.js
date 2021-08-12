@@ -9,14 +9,6 @@ const schema = yup.object().shape({
   hash_password: yup.string().required().min(6),
 });
 
-const getTokenFrom = async (req) => {
-  const authorization = req.get("authorization");
-  if (authorization && authorization.toLowerCase().startsWith("bearer ")) {
-    return authorization.substring(7);
-  }
-  return null;
-};
-
 const handler = async ({ method, body: { email, password } }, res) => {
   if (method === "POST") {
     const user = {
@@ -38,13 +30,11 @@ const handler = async ({ method, body: { email, password } }, res) => {
               user,
               process.env.ACCESS_TOKEN_SECRET
             );
-            return res
-              .status(200)
-              .send({
-                token: jsonToken,
-                email: schemaValid.email,
-                is_admin: userExists[0].is_admin,
-              });
+            return res.status(200).send({
+              token: jsonToken,
+              email: schemaValid.email,
+              is_admin: userExists[0].is_admin,
+            });
           } else {
             return res
               .status(400)
