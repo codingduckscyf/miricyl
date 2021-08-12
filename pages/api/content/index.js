@@ -1,6 +1,7 @@
 import sql from "~/lib/postgres";
 
 const handler = async (req, res) => {
+  const issuesTest = await sql`SELECT * FROM issues;`;
   if (req.method === "GET") {
     return res.status(200).json({ data: await sql`SELECT * FROM content;` });
   }
