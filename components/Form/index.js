@@ -5,22 +5,11 @@ import * as yup from "yup";
 const Form = ({ data, submit, formTitle }) => {
   const { data: issuesData, error: issuesError } = useSWR(`/api/issues`);
   const [errors, setErrors] = useState([]);
-
-  // destructuring data obj
-  const {
-    title: contentTitle,
-    description: contentDescription,
-    content_type: contentType,
-    img_url: contentImgUrl,
-    video_url: contentVideoUrl,
-  } = data;
-
-  // for ref
-  const titleRef = useRef(null);
-  const descriptionRef = useRef(null);
-  const contentTypeRef = useRef(null);
-  const imgUrlRef = useRef(null);
-  const videoUrlRef = useRef(null);
+  const [title, setTitle] = useState(data.title);
+  const [description, setDescription] = useState(data.description);
+  const [contentType, setContentType] = useState(data.content_type);
+  const [imgUrl, setImgUrl] = useState(data.img_url);
+  const [videoUrl, setVideoUrl] = useState(data.video_url);
   const issueIdRef = useRef(null);
 
   if (!issuesData && !issuesError) {
@@ -31,6 +20,7 @@ const Form = ({ data, submit, formTitle }) => {
     return <h1>Not found</h1>;
   }
 
+  // sets shape of object
   const dataSchema = yup.object().shape({
     title: yup.string().min(1).required(),
     description: yup.string().required(),
@@ -42,16 +32,19 @@ const Form = ({ data, submit, formTitle }) => {
   const handleSubmit = async (event) => {
     event.preventDefault();
 
-    // data for page
+    // collect values from input fields
     const data = {
-      title: titleRef.current.value,
-      description: descriptionRef.current.value,
-      content_type: contentTypeRef.current.value,
-      img_url: imgUrlRef.current.value,
-      video_url: videoUrlRef.current.value,
+      title: title,
+      description: description,
+      content_type: contentType,
+      img_url: imgUrl,
+      video_url: videoUrl,
       relations: Number(issueIdRef.current.value),
     };
 
+    // when abortEarly:false -> collects errors from all fields
+    // if abortEarly:true -> returns error from one field
+    // path = id of the field
     try {
       await dataSchema.validate(data, { abortEarly: false });
       submit(data);
@@ -82,11 +75,11 @@ const Form = ({ data, submit, formTitle }) => {
           </div>
           <div className="float-left w-3/4 mt-2">
             <input
-              ref={titleRef}
               type="text"
               id="title"
               name="title"
-              defaultValue={contentTitle}
+              value={title}
+              onChange={(e) => setTitle(e.target.value)}
               className={`${
                 errors.includes("title") && "border-red-600"
               } w-3/4 p-4 border border-gray-600 rounded resize-y`}
@@ -103,11 +96,11 @@ const Form = ({ data, submit, formTitle }) => {
           </div>
           <div className="float-left w-3/4 mt-2">
             <textarea
-              ref={descriptionRef}
               type="text"
               id="description"
               name="description"
-              defaultValue={contentDescription}
+              value={description}
+              onChange={(e) => setDescription(e.target.value)}
               className={`${
                 errors.includes("description") && "border-red-600"
               } w-3/4 h-40 p-4 border border-gray-600 rounded resize-y`}
@@ -124,11 +117,11 @@ const Form = ({ data, submit, formTitle }) => {
           </div>
           <div className="float-left w-3/4 mt-2">
             <input
-              ref={contentTypeRef}
               type="text"
               id="content_type"
               name="content_type"
-              defaultValue={contentType}
+              value={contentType}
+              onChange={(e) => setContentType(e.target.value)}
               className={`${
                 errors.includes("content_type") && "border-red-600"
               } w-3/4 p-4 border border-gray-600 rounded resize-y`}
@@ -145,11 +138,11 @@ const Form = ({ data, submit, formTitle }) => {
           </div>
           <div className="float-left w-3/4 mt-2">
             <input
-              ref={imgUrlRef}
               type="text"
               id="img_url"
               name="img_url"
-              defaultValue={contentImgUrl}
+              value={imgUrl}
+              onChange={(e) => setImgUrl(e.target.value)}
               className={`${
                 errors.includes("img_url") && "border-red-600"
               } w-3/4 p-4 border border-gray-600 rounded resize-y`}
@@ -166,11 +159,11 @@ const Form = ({ data, submit, formTitle }) => {
           </div>
           <div className="float-left w-3/4 mt-2">
             <input
-              ref={videoUrlRef}
               type="text"
               id="video_url"
               name="video_url"
-              defaultValue={contentVideoUrl}
+              value={videoUrl}
+              onChange={(e) => setVideoUrl(e.target.value)}
               className={`${
                 errors.includes("video_url") && "border-red-600"
               } w-3/4 p-4 border border-gray-600 rounded resize-y`}
