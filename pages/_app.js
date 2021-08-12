@@ -3,30 +3,39 @@ import { SWRConfig } from "swr";
 import { fetcher } from "~/lib/fetcher";
 import { Provider } from "next-auth/client";
 import { createContext, useState } from "react";
+import { useEffect } from "react/cjs/react.development";
 
 export const UserContext = createContext();
 
-export default function MyApp({ Component, pageProps }) {
-  const UserContextProvider = (props) => {
-    const [user, setUser] = useState({ email: "Anything" });
-    const storeUser = (user) => {
-      setUser({
-        token: token,
-        email: user.email,
-        isAdmin: user.is_admin,
-      });
-    };
-
-    const logout = () => {
-      setUser({});
-    };
-    return (
-      <UserContext.Provider value={{ user, storeUser, logout }}>
-        {props.children}
-      </UserContext.Provider>
-    );
+const UserContextProvider = (props) => {
+  const [user, setUser] = useState({
+    token: "",
+    email: "",
+    isAdmin: false,
+  });
+  const storeUser = (user) => {
+    setUser({
+      token: user.token,
+      email: user.email,
+      isAdmin: user.is_admin,
+    });
   };
+  const logout = () => {
+    setUser({});
+  };
+  useEffect(() => {
+    fetch("/api/auth/user")
+      .then((res) => res.json())
+      .then((data) => storeUser(data));
+  }, []);
+  return (
+    <UserContext.Provider value={{ user, storeUser, setUser, logout }}>
+      {props.children}
+    </UserContext.Provider>
+  );
+};
 
+export default function MyApp({ Component, pageProps }) {
   return (
     <UserContextProvider>
       <Provider session={pageProps.session}>

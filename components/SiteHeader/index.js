@@ -7,8 +7,8 @@ const SiteHeader = () => {
   const [isExpanded, setIsExpanded] = useState(false);
 
   return (
-    <header className="flex justify-between p-1 m-2">
-      <nav className="flex flex-col sm:flex-row justify-between items-center mx-auto w-full md:max-w-8xl text-l md:text-xl">
+    <header className="flex justify-between items-center p-3 bg-gray-50">
+      <nav className="flex flex-col sm:flex-row justify-between items-center items-center mx-auto w-full md:max-w-8xl text-l md:text-xl">
         <div className="flex flex-row justify-between items-center mx-auto w-full">
           <div className="p-2">
             <Link href="/">
