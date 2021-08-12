@@ -25,8 +25,14 @@ const UserContextProvider = (props) => {
   };
   useEffect(() => {
     fetch("/api/auth/user")
-      .then((res) => res.json())
-      .then((data) => storeUser(data));
+      .then((res) => {
+        res.json();
+        console.log(res.json());
+      })
+      .then((data) => {
+        storeUser(data);
+        console.log(data);
+      });
   }, []);
   return (
     <UserContext.Provider value={{ user, storeUser, setUser, logout }}>
