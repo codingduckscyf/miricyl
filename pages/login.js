@@ -1,12 +1,15 @@
 import SiteHeader from "~/components/SiteHeader";
 import Footer from "~/components/Footer";
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { useRouter } from "next/router";
+import { UserContext } from "./_app";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loginError, setLoginError] = useState("");
+
+  const { setUser } = useContext(UserContext);
 
   const router = useRouter();
 
@@ -31,8 +34,10 @@ const Login = () => {
         }
         if (data && data.token) {
           if (data.is_admin) {
-            router.push("/AdminRules");
+            setUser(data);
+            router.push("/favorites");
           } else {
+            setUser(data);
             router.push("/");
           }
         }
@@ -40,16 +45,16 @@ const Login = () => {
   };
 
   return (
-    <div className="min-h-screen relative flex flex-col justify-between align-center">
+    <div className="min-h-screen relative flex flex-col justify-between align-center bg-gray-300">
       <SiteHeader />
       <form
         onSubmit={handleLogin}
-        className="flex flex-col w-1/4 h-2/4 p-12 mx-auto justify-center align-center shadow-lg border rounded-md border-none"
+        className="flex flex-col w-1/4 h-2/4 p-12 mx-auto bg-gray-200 justify-center align-center shadow-lg border rounded-md border-none"
       >
         <p className="text-center">Login</p>
         <label>Email</label>
         <input
-          className="border rounded-sm border-none"
+          className="border rounded-sm border-none placeholder-blue-50::placeholder"
           name="email"
           type="email"
           value={email}
@@ -57,7 +62,7 @@ const Login = () => {
         />
         <label>Password</label>
         <input
-          className="border rounded-sm border-none"
+          className="border rounded-sm border-none placeholder-blue-50::placeholder"
           name="password"
           type="password"
           value={password}

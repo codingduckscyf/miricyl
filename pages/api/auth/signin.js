@@ -3,6 +3,7 @@ import bcrypt from "bcrypt";
 import sql from "~/lib/postgres";
 import * as yup from "yup";
 import jwt from "jsonwebtoken";
+import cookie from "cookie";
 
 const schema = yup.object().shape({
   email: yup.string().email().required().lowercase(),
@@ -27,9 +28,17 @@ const handler = async ({ method, body: { email, password } }, res) => {
           );
           if (userValid) {
             const jsonToken = await jwt.sign(
-              user,
+              {
+                email: userExists[0].email,
+                isAdmin: userExists[0].is_admin,
+              },
               process.env.ACCESS_TOKEN_SECRET
             );
+            const accessCookie = cookie.serialize("token", jsonToken, {
+              httpOnly: true,
+              maxAge: 60 * 60 * 24,
+            });
+            res.setHeader("Set-Cookie", accessCookie);
             return res.status(200).send({
               token: jsonToken,
               email: schemaValid.email,

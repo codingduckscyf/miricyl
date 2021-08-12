@@ -8,6 +8,7 @@
   },
   "dependencies": {
     "bcrypt": "^5.0.1",
+    "cookie": "^0.4.1",
     "jsonwebtoken": "^8.5.1",
     "next": "latest",
     "next-auth": "^3.27.3",
