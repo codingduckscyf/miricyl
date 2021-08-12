@@ -47,10 +47,14 @@ const UpdateContent = () => {
   return (
     <Layout>
       <div>
-        <div className="bg-red-200 p-10 text-2xl text-center">
+        <div className="text-center text-2xl text-purple-800 w-2/4 mx-auto font-bold mt-6">
           Make your changes and submit the form
         </div>
-        <Form data={data} submit={handleUpdateContent} />
+        <Form
+          data={data}
+          submit={handleUpdateContent}
+          formTitle={"Update content form"}
+        />
       </div>
     </Layout>
   );
