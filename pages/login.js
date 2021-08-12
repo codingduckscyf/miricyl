@@ -35,9 +35,11 @@ const Login = () => {
         if (data && data.token) {
           if (data.is_admin) {
             setUser(data);
+            console.log(data);
             router.push("/favorites");
           } else {
             setUser(data);
+            console.log(data);
             router.push("/");
           }
         }
