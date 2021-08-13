@@ -40,7 +40,7 @@ const AddContentPage = () => {
   return (
     <Layout>
       <div>
-        <h1 className="text-center text-2xl px-32">
+        <h1 className="text-center text-2xl text-purple-800 w-2/4 mx-auto font-bold mt-6">
           To add new content for mental health issues just fill out the form
           below and submit it
         </h1>
@@ -49,7 +49,11 @@ const AddContentPage = () => {
             Please check your form
           </h1>
         )}
-        <Form data={data} submit={handleAddContentSubmit} />
+        <Form
+          data={data}
+          submit={handleAddContentSubmit}
+          formTitle="Add content form"
+        />
       </div>
     </Layout>
   );

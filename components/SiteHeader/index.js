@@ -3,6 +3,7 @@ import Link from "next/link";
 import Dropdown from "./Dropdown";
 import CategoriesList from "./CategoriesList";
 import { MdFavorite } from "react-icons/md";
+
 const SiteHeader = () => {
   const [isExpanded, setIsExpanded] = useState(false);
 
@@ -54,6 +55,15 @@ const SiteHeader = () => {
           </div>
         ) : (
           <div className="hidden sm:flex justify-between items-center w-full">
+            {/* button for admin screen */}
+            {/* <Link href="/add-content">
+              <a
+                type="button"
+                className="items-center p-2 border border-transparent text-xs font-small rounded-lg shadow-sm text-white bg-blue-800 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 text-base md:text-xl w-max"
+              >
+                Add new content
+              </a>
+            </Link> */}
             <Dropdown />
             <Link href="/about">
               <a className="hover:text-blue-800 mt-2">About</a>
