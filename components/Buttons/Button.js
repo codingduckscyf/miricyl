@@ -1,8 +1,8 @@
 import Link from "next/link";
 
-const Button = ({ caption }) => {
+const Button = ({ caption, link }) => {
   return (
-    <Link href="#categories" className="items-center">
+    <Link href={link} className="items-center">
       <a>
         <button
           type="button"
