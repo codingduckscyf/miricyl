@@ -1,26 +1,18 @@
-// check for token
-//verify if token exists
-//find the user and send the user back || send invalid
-// check if a user is logged in the frontend
-//useffect check this endpoint
 require("dotenv").config();
-import sql from "postgres";
+import sql from "~/lib/postgres";
+import { verify } from "jsonwebtoken";
 
-const getTokenFrom = (req) => {
-  const authorization = req.get("authorization");
-  if (authorization && authorization.toLowerCase().startsWith("bearer ")) {
-    console.log(authorization);
-    return authorization.substring(7);
-  }
-  return null;
-};
-
-export const handler = async (req, res) => {
-  const token = getTokenFrom(req);
-  const decodedToken = jwt.verify(token, process.env.ACCESS_TOKEN_SECRET);
-  console.log("Token", token, "decoded", decodedToken);
-  if (!token || !decodedToken.id) {
+const handler = async ({ cookies: { token } }, res) => {
+  if (!token) {
     return res.status(401).json({ error: "token missing or invalid" });
   }
-  const user = await User.findById(decodedToken.id);
+  const decodedToken = verify(token, process.env.ACCESS_TOKEN_SECRET);
+  if (!token || !decodedToken) {
+    return res.status(401).json({ error: "token missing or invalid" });
+  }
+  const [user] =
+    await sql`SELECT * FROM users WHERE email=${decodedToken.email}`;
+  return res.status(200).json(user);
 };
+
+export default handler;

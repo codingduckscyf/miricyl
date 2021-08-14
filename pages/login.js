@@ -1,49 +1,60 @@
 import SiteHeader from "~/components/SiteHeader";
 import Footer from "~/components/Footer";
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 import { useRouter } from "next/router";
 import { UserContext } from "./_app";
+import * as yup from "yup";
+
+const schema = yup.object().shape({
+  email: yup.string().email().required(),
+  password: yup.string().required().min(6),
+});
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loginError, setLoginError] = useState("");
 
-  const { setUser } = useContext(UserContext);
-
+  const { storeUser, setIsLoggedIn } = useContext(UserContext);
   const router = useRouter();
+
+  const user = {
+    email: email,
+    password: password,
+  };
 
   const handleLogin = async (e) => {
     e.preventDefault();
-    fetch("/api/auth/signin", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        email,
-        password,
-      }),
-    })
-      .then((res) => {
-        return res.json();
+    if (schema.isValid(user)) {
+      fetch("/api/auth/signin", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email,
+          password,
+        }),
       })
-      .then((data) => {
-        if (data && data.error) {
-          setLoginError(data.message);
-        }
-        if (data && data.token) {
-          if (data.is_admin) {
-            setUser(data);
-            console.log(data);
-            router.push("/favorites");
-          } else {
-            setUser(data);
-            console.log(data);
-            router.push("/");
+        .then((res) => {
+          return res.json();
+        })
+        .then((data) => {
+          if (data && data.error) {
+            setLoginError(data.message);
           }
-        }
-      });
+          if (data && data.token) {
+            if (data.is_admin) {
+              storeUser(data);
+              setIsLoggedIn(true);
+              router.push("/favorites");
+            } else {
+              router.push("/");
+            }
+          }
+        });
+    } else {
+    }
   };
 
   return (
@@ -72,7 +83,7 @@ const Login = () => {
         />
         <input
           type="submit"
-          value="Submit"
+          value="Sign In"
           className="w-2/4 m-3 self-center border rounded-md border-none"
         />
         {loginError ? <p style={{ color: "red" }}>{loginError}</p> : null}

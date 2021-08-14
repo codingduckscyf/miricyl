@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import Link from "next/link";
 import Dropdown from "./Dropdown";
 import CategoriesList from "./CategoriesList";
@@ -7,17 +7,24 @@ import { MdFavorite } from "react-icons/md";
 const SiteHeader = () => {
   const [isExpanded, setIsExpanded] = useState(false);
 
+  const { user } = useContext(UserContext);
+
   return (
     <header className="flex justify-between items-center p-3 bg-gray-50">
-      <nav className="flex flex-col sm:flex-row justify-between items-center items-center mx-auto w-full md:max-w-8xl text-l md:text-xl">
+      <nav className="flex flex-col sm:flex-row justify-around items-center items-center mx-auto w-full md:max-w-8xl text-l md:text-xl">
         <div className="flex flex-row justify-between items-center mx-auto w-full">
-          <div className="p-2">
-            <Link href="/">
-              <a className="pr-4 hover:text-blue-800 font-extrabold mt-2">
-                Miricyl
-              </a>
-            </Link>
-          </div>
+          {user.email && (
+            <div className="flex flex-column justify-between">
+              <p>You are Logged in as: {user.email}</p>
+              <Logout link={"/"} />
+            </div>
+          )}
+          <Link href="/">
+            <a className="pr-4 hover:text-blue-800 font-extrabold mt-2">
+              Miricyl
+            </a>
+          </Link>
+
           <div className="block sm:hidden">
             <button
               onClick={() => {

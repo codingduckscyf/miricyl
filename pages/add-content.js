@@ -1,9 +1,11 @@
 import { useRouter } from "next/router";
-import { useState } from "react";
+import { useState, useContext, useEffect } from "react";
 import Form from "~/components/Form";
 import Layout from "~/components/Layout/Layout";
+import { UserContext } from "./_app";
 
 const AddContentPage = () => {
+  const { user } = useContext(UserContext);
   const router = useRouter();
   const [error, setError] = useState(false);
 
@@ -37,6 +39,14 @@ const AddContentPage = () => {
     relations: "",
   };
 
+  useEffect(() => {
+    if (!user.isAdmin) {
+      router.push("/");
+    }
+  }, [user, router]);
+  if (!user.isAdmin) {
+    return <div>Loading</div>;
+  }
   return (
     <Layout>
       <div>

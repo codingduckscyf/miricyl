@@ -2,8 +2,7 @@ import "~/styles/index.css";
 import { SWRConfig } from "swr";
 import { fetcher } from "~/lib/fetcher";
 import { Provider } from "next-auth/client";
-import { createContext, useState } from "react";
-import { useEffect } from "react/cjs/react.development";
+import { createContext, useState, useEffect } from "react";
 
 export const UserContext = createContext();
 
@@ -13,29 +12,33 @@ const UserContextProvider = (props) => {
     email: "",
     isAdmin: false,
   });
+
   const storeUser = (user) => {
     setUser({
-      token: user.token,
-      email: user.email,
-      isAdmin: user.is_admin,
+      token: user.token || "",
+      email: user.email || "",
+      isAdmin: user.is_admin || false,
     });
   };
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
   const logout = () => {
     setUser({});
   };
+
   useEffect(() => {
     fetch("/api/auth/user")
-      .then((res) => {
-        res.json();
-        console.log(res.json());
-      })
+      .then((res) => res.json())
       .then((data) => {
         storeUser(data);
-        console.log(data);
+        setIsLoggedIn(true);
       });
   }, []);
+
   return (
-    <UserContext.Provider value={{ user, storeUser, setUser, logout }}>
+    <UserContext.Provider
+      value={{ user, storeUser, logout, isLoggedIn, setIsLoggedIn }}
+    >
       {props.children}
     </UserContext.Provider>
   );
