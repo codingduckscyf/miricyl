@@ -3,24 +3,23 @@ import { useContext } from "react";
 import { UserContext } from "~/pages/_app";
 
 const Login = ({ link }) => {
-  const { setIsLoggedIn, logout } = useContext(UserContext);
+  const { logout } = useContext(UserContext);
   const signOut = () => {
     fetch("/api/auth/logout")
       .then((res) => res.json())
       .then(({ message }) => {
         if (message) {
           logout();
-          setIsLoggedIn(false);
         }
       });
   };
 
   return (
     <Link href={link}>
-      <a>
+      <a className="p-2 self-center">
         <button
           type="button"
-          className="bg-blue-500 hover:bg-blue-700 text-white py-1 px-1 rounded"
+          className="bg-blue-500 hover:bg-blue-700 text-white text-sm px-2 py-1 rounded border-none rounded"
           onClick={signOut}
         >
           Logout

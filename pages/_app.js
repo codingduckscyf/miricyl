@@ -20,7 +20,6 @@ const UserContextProvider = (props) => {
       isAdmin: user.is_admin || false,
     });
   };
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   const logout = () => {
     setUser({});
@@ -31,14 +30,11 @@ const UserContextProvider = (props) => {
       .then((res) => res.json())
       .then((data) => {
         storeUser(data);
-        setIsLoggedIn(true);
       });
   }, []);
 
   return (
-    <UserContext.Provider
-      value={{ user, storeUser, logout, isLoggedIn, setIsLoggedIn }}
-    >
+    <UserContext.Provider value={{ user, storeUser, logout }}>
       {props.children}
     </UserContext.Provider>
   );
