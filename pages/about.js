@@ -1,9 +1,6 @@
 import Layout from "~/components/Layout/Layout";
-import { useContext } from "react";
-import { UserContext } from "./_app";
 
 const AboutPage = () => {
-  const { user } = useContext(UserContext);
   return (
     <Layout title="about">
       <div>
