@@ -20,7 +20,7 @@ const Header = ({
           </h2>
           <p className="mt-2 text-gray-500 text-xl md:text-2xl">{caption}</p>
           {buttonCaption && (
-            <Button caption={buttonCaption} link="/categories" />
+            <Button caption={buttonCaption} link={"#categories"} />
           )}
         </div>
         <div className="md:flex-shrink-0">

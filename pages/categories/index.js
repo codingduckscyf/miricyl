@@ -12,7 +12,7 @@ const Categories = ({ issuesCategories, error }) => {
     return <div>Not found.</div>;
   }
   return (
-    <div>
+    <div id="categories">
       <div className="flex flex-col md:flex-row md:flex-wrap justify-end items-center md:justify-between mb-20 sm:mx-12">
         {issuesCategories.map(({ id, category_id, name, slug }) => (
           <SubCatCard
