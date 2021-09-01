@@ -1,6 +1,11 @@
 import ContentCard from "../ContentCard";
 
-const Content = ({ contentArray, heartIconClickHandler, favorites }) => {
+const Content = ({
+  contentArray,
+  heartIconClickHandler,
+  favorites,
+  contentTitle,
+}) => {
   return (
     <div className="px-12">
       <h1 className="text-2xl">{contentTitle}</h1>
