@@ -31,7 +31,6 @@ const Favorites = () => {
 
   return (
     <Layout>
-
       <Header
         backgroundColor="blue"
         imgSrc={favorite}
@@ -48,7 +47,10 @@ const Favorites = () => {
         />
         <h2 className="text-2xl">Saved Articles</h2>
         <Content
-          contentTitle="Articles
+          contentTitle="Articles"
+          contentArray={articles}
+          heartIconClickHandler={heartIconClickHandler}
+          favorites={favorites}
         />
       </div>
     </Layout>
