@@ -11,9 +11,9 @@ const Header = ({
 }) => {
   return (
     <div
-      className={`bg-${backgroundColor}-100 md:h-1/2 max-w-md mx-auto overflow-hidden md:max-w-full`}
+      className={`bg-${backgroundColor}-100 md:h-1/2 max-w-md mb-8 mx-auto overflow-hidden md:max-w-full`}
     >
-      <div className="md:flex md:justify-around">
+      <div className="md:flex md:justify-between">
         <div className="p-8 lg:p-20 flex flex-col justify-around">
           <h2 className="font-bold tracking-wide text-3xl md:text-5xl">
             {title}

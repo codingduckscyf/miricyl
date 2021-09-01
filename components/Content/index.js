@@ -2,8 +2,9 @@ import ContentCard from "../ContentCard";
 
 const Content = ({ contentArray, heartIconClickHandler, favorites }) => {
   return (
-    <div className="p-12">
-      <ul className="flex flex-col sm:flex-row flex-wrap justify-between p-4 my-12">
+    <div className="px-12">
+      <h1 className="text-2xl">{contentTitle}</h1>
+      <ul className="flex flex-col sm:flex-row flex-wrap justify-between p-4 mt-6">
         {contentArray.map(
           ({ id, img_url, title, content_type, description, video_url }) => (
             <ContentCard
