@@ -1,9 +1,11 @@
 import { useRouter } from "next/router";
-import { useState } from "react";
+import { useState, useContext, useEffect } from "react";
 import Form from "~/components/Form";
 import Layout from "~/components/Layout/Layout";
+import { UserContext } from "./_app";
 
 const AddContentPage = () => {
+  const { user } = useContext(UserContext);
   const router = useRouter();
   const [error, setError] = useState(false);
 
@@ -37,10 +39,18 @@ const AddContentPage = () => {
     relations: "",
   };
 
+  useEffect(() => {
+    if (!user.isAdmin) {
+      router.push("/");
+    }
+  }, [user, router]);
+  if (!user.isAdmin) {
+    return <div>Loading</div>;
+  }
   return (
     <Layout>
       <div>
-        <h1 className="text-center text-2xl px-32">
+        <h1 className="text-center text-2xl text-purple-800 w-2/4 mx-auto font-bold mt-6">
           To add new content for mental health issues just fill out the form
           below and submit it
         </h1>
@@ -49,7 +59,11 @@ const AddContentPage = () => {
             Please check your form
           </h1>
         )}
-        <Form data={data} submit={handleAddContentSubmit} />
+        <Form
+          data={data}
+          submit={handleAddContentSubmit}
+          formTitle="Add content form"
+        />
       </div>
     </Layout>
   );

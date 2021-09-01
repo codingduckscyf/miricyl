@@ -27,7 +27,7 @@ const handler = async ({ method, body: { email, password } }, res) => {
           userValid,
           ...Object.keys(userValid)
         )} RETURNING *;`;
-        return res.json({ users: newUser });
+        return res.json({ user: newUser });
       }
     } else {
       return res.status(400).json({ message: "Not valid data" });

@@ -1,6 +1,9 @@
 import Image from "next/image";
 import Link from "next/link";
 import { MdFavorite } from "react-icons/md";
+import { GrEdit } from "react-icons/gr";
+import { useContext } from "react";
+import { UserContext } from "~/pages/_app";
 
 const ContentCard = ({
   imgSrc,
@@ -11,7 +14,9 @@ const ContentCard = ({
   link,
   heartIconClickHandler,
   isLiked,
+  editUrl,
 }) => {
+  const { user } = useContext(UserContext);
   return (
     <div className="mx-auto my-8 relative">
       <Link href={link}>
@@ -47,6 +52,15 @@ const ContentCard = ({
           onClick={heartIconClickHandler}
         />
       </div>
+      {user.isAdmin && (
+        <Link href={editUrl}>
+          <a>
+            <div className="flex justify-end absolute bottom-5 left-3">
+              <GrEdit className="text-2xl cursor-pointer" />
+            </div>
+          </a>
+        </Link>
+      )}
     </div>
   );
 };

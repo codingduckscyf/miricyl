@@ -1,7 +1,7 @@
 import Layout from "~/components/Layout/Layout";
 import useSWR from "swr";
 import { useRouter } from "next/dist/client/router";
-import ContentCard from "~/components/ContentCard";
+import Content from "~/components/Content";
 import IssueInfo from "~/components/IssueInfo";
 import { useFavorite } from "~/lib/useLocalStorage";
 
@@ -34,23 +34,11 @@ const Issue = () => {
         issueTitle={issueInfo.data.name}
         issueDescription={issueInfo.data.description}
       />
-      <ul className="flex flex-col sm:flex-row flex-wrap justify-between p-4 my-12">
-        {issueContent.data.map(
-          ({ id, img_url, title, content_type, description, video_url }) => (
-            <ContentCard
-              key={id}
-              isLiked={favorites.includes(id)}
-              imgSrc={img_url ?? "https://picsum.photos/100"}
-              imgAlt={title}
-              contentType={content_type}
-              title={title}
-              caption={description}
-              link={video_url ?? "https://en.wikipedia.org/wiki/Mental_health"}
-              heartIconClickHandler={() => heartIconClickHandler(id)}
-            />
-          )
-        )}
-      </ul>
+      <Content
+        contentArray={issueContent.data}
+        heartIconClickHandler={heartIconClickHandler}
+        favorites={favorites}
+      />
     </Layout>
   );
 };

@@ -3,19 +3,12 @@ import bcrypt from "bcrypt";
 import sql from "~/lib/postgres";
 import * as yup from "yup";
 import jwt from "jsonwebtoken";
+import cookie from "cookie";
 
 const schema = yup.object().shape({
   email: yup.string().email().required().lowercase(),
   hash_password: yup.string().required().min(6),
 });
-
-const getTokenFrom = async (req) => {
-  const authorization = req.get("authorization");
-  if (authorization && authorization.toLowerCase().startsWith("bearer ")) {
-    return authorization.substring(7);
-  }
-  return null;
-};
 
 const handler = async ({ method, body: { email, password } }, res) => {
   if (method === "POST") {
@@ -35,25 +28,35 @@ const handler = async ({ method, body: { email, password } }, res) => {
           );
           if (userValid) {
             const jsonToken = await jwt.sign(
-              user,
+              {
+                email: userExists[0].email,
+                isAdmin: userExists[0].is_admin,
+              },
               process.env.ACCESS_TOKEN_SECRET
             );
-            return res
-              .status(200)
-              .send({ token: jsonToken, email: schemaValid.email });
+            const accessCookie = cookie.serialize("token", jsonToken, {
+              httpOnly: true,
+              maxAge: 60 * 60 * 24,
+            });
+            res.setHeader("Set-Cookie", accessCookie);
+            return res.status(200).send({
+              token: jsonToken,
+              email: schemaValid.email,
+              is_admin: userExists[0].is_admin,
+            });
           } else {
             return res
               .status(400)
-              .json({ message: "Email or password incorrect" });
+              .json({ message: "Invalid email or password" });
           }
         } catch (error) {
           res.status(500).json({ errorMessage: error });
         }
       } else {
-        return res.status(400).send({ message: "Email or password incorrect" });
+        return res.status(400).send({ message: "Invalid email or password" });
       }
     } else {
-      return res.status(400).json({ message: "Not valid data" });
+      return res.status(400).json({ message: "Invalid email or password" });
     }
   }
 };

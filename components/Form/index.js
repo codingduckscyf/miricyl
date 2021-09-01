@@ -2,7 +2,7 @@ import { useRef, useState } from "react";
 import useSWR from "swr";
 import * as yup from "yup";
 
-const Form = ({ data, submit }) => {
+const Form = ({ data, submit, formTitle }) => {
   const { data: issuesData, error: issuesError } = useSWR(`/api/issues`);
   const [errors, setErrors] = useState([]);
   const [title, setTitle] = useState(data.title);
@@ -64,6 +64,9 @@ const Form = ({ data, submit }) => {
             Please fill all required fields
           </h1>
         )}
+        <div>
+          <h3 className="text-2xl text-blue-600 font-bold mb-4">{formTitle}</h3>
+        </div>
         <div>
           <div className="float-left w-1/4 mt-2 text-right">
             <label htmlFor="title" className="inline-block p-4">

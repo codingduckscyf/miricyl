@@ -1,11 +1,6 @@
 import ContentCard from "../ContentCard";
 
-const Content = ({
-  contentTitle,
-  contentArray,
-  heartIconClickHandler,
-  favorites,
-}) => {
+const Content = ({ contentArray, heartIconClickHandler, favorites }) => {
   return (
     <div className="px-12">
       <h1 className="text-2xl">{contentTitle}</h1>
@@ -22,6 +17,7 @@ const Content = ({
               caption={description}
               link={video_url ?? "https://en.wikipedia.org/wiki/Mental_health"}
               heartIconClickHandler={() => heartIconClickHandler(id)}
+              editUrl={`/update-content/${id}`}
             />
           )
         )}
