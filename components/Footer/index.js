@@ -2,22 +2,22 @@ import FooterList from "./FooterList";
 
 const categories = ["Mental health", "Social and relationships", "Life Issues"];
 const topics = ["Depression", "Anxiety", "Loneliness"];
-const about = ["About Miricyl", "Support"];
+const about = ["About Us", "Support"];
 const social = ["Facebook", "Instagram", "Twitter"];
 
 const Footer = () => {
   return (
-    <footer className="bg-gray-100 w-full">
-      <div className="container mx-auto">
-        <div className="flex justify-around">
+    <footer className="bg-gray-200">
+      <div>
+        <div className="flex flex-col sm:flex-row sm:justify-around text-center">
           <FooterList listName="Categories" listItems={categories} />
           <FooterList listName="Topics" listItems={topics} />
-          <FooterList listName="About" listItems={about} />
+          <FooterList listName="About Miricyl" listItems={about} />
           <FooterList listName="Social" listItems={social} />
         </div>
-        <p className="text-gray-500 pt-7 text-center pb-3 text-sm">
-          Copyright {new Date().getFullYear()} Miricyl
-        </p>
+        <div className="text-gray-700 py-4 mt-7 text-center text-sm bg-gray-400 ">
+          © Copyright {new Date().getFullYear()} Miricyl
+        </div>
       </div>
     </footer>
   );
