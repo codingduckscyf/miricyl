@@ -27,7 +27,7 @@ const CategoriesSelection = () => {
     <div className="mt-16 md:mt-32 mb-4 mx-10 flex flex-col flex-grow items-center justify-center">
       <div>
         <h1 className="font-bold text-4xl">What are you needing help with?</h1>
-        <p className="mt-2 text-gray-500 text-xl md:text-2xl">
+        <p className="my-3 text-gray-500 text-xl md:text-2xl">
           Select a topic from the options below to learn more.
         </p>
       </div>
