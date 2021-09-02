@@ -5,7 +5,7 @@ const SubCatCard = ({ backgroundColor, title, category, link }) => {
       <Link href={link}>
         <a>
           <div
-            className={`shadow-xl w-64 md:w-96 h-32 md:h-48 bg-gradient-to-r from-${backgroundColor}-700 to-${backgroundColor}-900 rounded-2xl flex flex-col justify-end  text-gray-200 `}
+            className={`shadow-xl w-72 md:w-96 h-32 md:h-48 bg-gradient-to-r from-${backgroundColor}-700 to-${backgroundColor}-900 rounded-2xl flex flex-col justify-end  text-gray-200 `}
           >
             <h3 className="text-base md:text-2xl block px-4 capitalize">
               {category}
