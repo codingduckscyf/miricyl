@@ -38,7 +38,7 @@ const Favorites = () => {
         title="My favourite items"
         caption={""}
       />
-      <div className="font-bold text-center">
+      <div className="">
         <Content
           contentTitle="Videos"
           contentArray={videos}

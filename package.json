@@ -7,6 +7,7 @@
     "lint": "lint-staged; pretty-quick --staged"
   },
   "dependencies": {
+    "@tailwindcss/line-clamp": "^0.2.1",
     "bcrypt": "^5.0.1",
     "cookie": "^0.4.1",
     "formik": "^2.2.9",
