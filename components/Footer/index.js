@@ -9,7 +9,7 @@ const Footer = () => {
   return (
     <footer className="bg-gray-200">
       <div>
-        <div className="flex flex-col sm:flex-row sm:justify-around text-center">
+        <div className="flex flex-col md:flex-row md:justify-around text-center">
           <FooterList listName="Categories" listItems={categories} />
           <FooterList listName="Topics" listItems={topics} />
           <FooterList listName="About Miricyl" listItems={about} />
