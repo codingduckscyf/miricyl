@@ -1,4 +1,3 @@
-import useSWR from "swr";
 import SubCatCard from "~/components/SubCatCard";
 import getColorForCategoryId from "~/lib/getColorForCategoryId";
 import convertSlugToTitle from "~/lib/convertSlugToTitle";
