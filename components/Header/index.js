@@ -25,7 +25,7 @@ const Header = ({
         </div>
         <div className="md:flex-shrink-0">
           <Image
-            className="md:h-1/4 object-cover rounded-l-3xl"
+            className="md:h-1/4 object-cover md:rounded-l-3xl"
             src={imgSrc}
             alt={imgAlt}
           />
