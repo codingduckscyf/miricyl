@@ -35,19 +35,18 @@ const Favorites = () => {
         backgroundColor="blue"
         imgSrc={favorite}
         imgAlt="pile of books"
-        title="My favourite items"
-        caption={""}
+        title="My favorite items"
       />
-      <div className="">
+      <div>
         <Content
-          contentTitle="Videos"
+          contentTitle="Saved Videos"
           contentArray={videos}
           heartIconClickHandler={heartIconClickHandler}
           favorites={favorites}
         />
-        <h2 className="text-2xl">Saved Articles</h2>
+
         <Content
-          contentTitle="Articles"
+          contentTitle="Saved Articles"
           contentArray={articles}
           heartIconClickHandler={heartIconClickHandler}
           favorites={favorites}

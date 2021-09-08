@@ -7,8 +7,10 @@ const Content = ({
   contentTitle,
 }) => {
   return (
-    <div className="px-12">
-      <h1 className="text-2xl">{contentTitle}</h1>
+    <div>
+      <h1 className="text-2xl md:text-4xl font-bold text-center w-max mx-auto mt-16">
+        {contentTitle}
+      </h1>
       <ul className="flex flex-col sm:flex-row flex-wrap justify-between p-4 mt-6">
         {contentArray.map(
           ({ id, img_url, title, content_type, description, video_url }) => (
